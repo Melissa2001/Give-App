@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { TextInput,StyleSheet } from "react-native";
 
 const Input=(props)=>{
