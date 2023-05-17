@@ -10,16 +10,17 @@ import { useNavigation } from "@react-navigation/native";
 
 const ForgotPass = () => {
     const navigation = useNavigation();
-    const [email, setEmail] = useState('');
+    const [newPass, setNewPass] = useState('');
+    const [confPass, setConfPass] = useState('');
     const [error, setError] = useState("");
     const image = require('../../assets/give2.png');
     const handleSubmit = () => {
-        if (email === "" ) {
+        if (newPass === "" || confPass==="" ) {
             setError("Please fill in your credentials");
         } 
         else{
             setError("");
-            navigation.navigate('NewPass')
+            navigation.navigate("Login")
         }
     }
     return (
@@ -28,20 +29,27 @@ const ForgotPass = () => {
                 source={image}
                 style={{ alignSelf: 'center', resizeMode: 'contain', marginBottom: 70 ,marginTop:90}}
             />
-            <FormContainer title={"Forgot password"} >
+            <FormContainer title={"Create new password"} >
             <Text style={styles.middleText}>
                     Please enter your email address to receive a{"\n"}verification code
                 </Text>
                 <Input require
-                    placeholder={"Email ID"}
-                    name={"email"}
-                    id={"email"}
-                    value={email}
-                    onChangeText={(text) => setEmail(text.toLowerCase())}
+                    placeholder={"New password"}
+                    name={"newPass"}
+                    id={"newPass"}
+                    value={newPass}
+                    onChangeText={(text) => setNewPass(text)}
+                />
+                <Input require
+                    placeholder={"Confirm password"}
+                    name={"confPass"}
+                    id={"confPass"}
+                    value={confPass}
+                    onChangeText={(text) => setConfPass(text)}
                 />
 
                 {error ? <Error message={error} /> : null}
-                <CommonButton title={'Send'} bgColor={'#9683dd'} textColor={'#ffffff'}
+                <CommonButton title={'Save'} bgColor={'#9683dd'} textColor={'#ffffff'}
                     onPress={() => { handleSubmit()  }} />
 
             </FormContainer>

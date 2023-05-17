@@ -6,6 +6,9 @@ import Splash from "./Screens/Splash";
 import Login from "./Screens/Login";
 import SignUp from "./Screens/SignUp";
 import ForgotPass from "./Screens/ForgotPass";
+import OTP from "./Screens/OTP";
+import NewPass from "./Screens/NewPass";
+import Success from "./Screens/Success";
 
 const Stack = createNativeStackNavigator();
 
@@ -35,6 +38,24 @@ const AppNavigator = () => {
           options={{ headerShown: false }}
           name="ForgotPass"
           component={ForgotPass}
+        />
+
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="OTP"
+          component={OTP}
+        />
+
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="NewPass"
+          component={NewPass}
+        />
+
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="Success"
+          component={Success}
         />
 
       </Stack.Navigator>

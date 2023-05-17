@@ -18,11 +18,11 @@ const SignUp = () => {
     const handleSubmit = () => {
         if (email === "" || password === "" || name==="") {
             setError("Please fill in your credentials");
-        } else {
+        } 
+        else {
             console.log('Success');
-        }
-        if (email != "" && password != "" && name!="") {
             setError("");
+            navigation.navigate('OTP')
         }
     }
     return (
@@ -69,7 +69,7 @@ const SignUp = () => {
 
                 {error ? <Error message={error} /> : null}
                 <CommonButton title={'Sign Up'} bgColor={'#9683dd'} textColor={'#ffffff'}
-                    onPress={() => { handleSubmit() }} />
+                    onPress={() => { handleSubmit()  }} />
 
                 <Text style={styles.login}>
                     Already have an account?
