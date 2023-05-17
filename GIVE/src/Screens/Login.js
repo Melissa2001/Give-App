@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
 
@@ -14,7 +14,6 @@ const Login = () => {
     const [error, setError] = useState("");
 
     const image = require('../../assets/login.png');
-    const tick = require('../../assets/tick.png');
 
     const handleSubmit = () => {
         if (email === "" || password === "") {
@@ -28,7 +27,7 @@ const Login = () => {
     }
 
     return (
-        <View style={{ backgroundColor: '#ffffff' }}>
+        <View style={{ backgroundColor: '#ffffff', flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Image
                 source={image}
                 style={{alignSelf:'center',resizeMode:'contain'}}
@@ -52,7 +51,7 @@ const Login = () => {
                 />
 
 
-                <Text style={{ position: 'absolute', top: 210, right: 37, color: '#f59683', fontSize: 15 }}  onPress={()=>{navigation.navigate('ForgotPass')}}>Forgot Password
+                <Text style={{ marginLeft:250, color: '#f59683', fontSize: 15 ,marginTop:-10}}  onPress={()=>{navigation.navigate('ForgotPass')}}>Forgot Password
                 </Text>
                 {error ? <Error message={error} /> : null}
                 <CommonButton title={'Log In'} bgColor={'#9683dd'} textColor={'#ffffff'}
@@ -75,7 +74,9 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         alignSelf: "center",
         marginTop: 50,
-        fontSize:15
+        color: '#979797',
+        fontSize:15,
+        textAlign: 'center'
     }
 })
 

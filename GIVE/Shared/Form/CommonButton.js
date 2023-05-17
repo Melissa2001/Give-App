@@ -12,7 +12,8 @@ const CommonButton=({onPress,title,bgColor,textColor})=>{
             height:38.86,
             borderRadius:10,
             alignSelf:'center',
-            marginTop:50
+            marginTop:20,
+            marginBottom:20
         }}
         onPress={()=>{
             onPress();
