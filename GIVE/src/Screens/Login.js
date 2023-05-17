@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, ImageBackground, Image } from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
 
 import FormContainer from '../../Shared/Form/FormContainer';
@@ -56,7 +56,7 @@ const Login = () => {
                 </Text>
                 {error ? <Error message={error} /> : null}
                 <CommonButton title={'Log In'} bgColor={'#9683dd'} textColor={'#ffffff'}
-                    onPress={() => { handleSubmit(); }} />
+                    onPress={() => { handleSubmit() }} />
 
                 <Text style={styles.middleText}>
                     New User?

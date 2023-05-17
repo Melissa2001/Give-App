@@ -1,9 +1,13 @@
 import React from "react";
-import {View,Text} from "react-native"
+import { View, Text, Image } from "react-native"
 
-const SignUp=()=>{
-    <View>
-        <Text>SignUp</Text>
+const SignUp = () => {
+    const image = require('../../assets/give.png');
+    <View style={{ backgroundColor: '#ffffff' }}>
+        <Image
+            source={image}
+            style={{ alignSelf: 'center', resizeMode: 'contain' }}
+        />
     </View>
 }
 export default SignUp
