@@ -9,6 +9,7 @@ import ForgotPass from "./Screens/ForgotPass";
 import OTP from "./Screens/OTP";
 import NewPass from "./Screens/NewPass";
 import Success from "./Screens/Success";
+import Home from "./Screens/Home";
 
 const Stack = createNativeStackNavigator();
 
@@ -56,6 +57,12 @@ const AppNavigator = () => {
           options={{ headerShown: false }}
           name="Success"
           component={Success}
+        />
+
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="Home"
+          component={Home}
         />
 
       </Stack.Navigator>

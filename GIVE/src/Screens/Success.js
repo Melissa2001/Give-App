@@ -28,7 +28,7 @@ const Success = () => {
 
 
                 <CommonButton title={'Continue'} bgColor={'#9683dd'} textColor={'#ffffff'}
-                    onPress={() => { navigation.navigate('Login') }} />
+                    onPress={() => { navigation.navigate('Home') }} />
 
             </FormContainer>
             <Image
