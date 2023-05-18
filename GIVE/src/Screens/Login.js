@@ -53,7 +53,9 @@ const Login = () => {
 
                 <Text style={{ marginLeft:250, color: '#f59683', fontSize: 15 ,marginTop:-10}}  onPress={()=>{navigation.navigate('ForgotPass')}}>Forgot Password
                 </Text>
-                {error ? <Error message={error} /> : null}
+                <Text style={{ position: 'absolute', top: 210, right: 37, color: '#434343', fontSize: 15 }}>Forgot Password
+                </Text>
+
                 <CommonButton title={'Log In'} bgColor={'#9683dd'} textColor={'#ffffff'}
                     onPress={() => { handleSubmit() }} />
 
