@@ -1,12 +1,18 @@
 import { View, Text, StyleSheet } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react';
+
+
+import Search from '../../Shared/Search';
+import Card from '../../Shared/Card';
+
 
 const Main = () => {
     return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <Text>Organization</Text>
-        </View>
+      <View >
+          <Search />
+          <Card/>
+          
+      </View>
       );
     }
-
 export default Main
