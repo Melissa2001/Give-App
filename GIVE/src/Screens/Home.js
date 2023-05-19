@@ -34,7 +34,7 @@ const Home = () => {
           bottom: 0,
           flexDirection: 'row',
           alignItems: 'center',
-          borderRadius: 40
+          borderRadius: 15
         }}
       >
         <TouchableOpacity
@@ -50,7 +50,7 @@ const Home = () => {
         >
           <Image
             source={require('../../assets/HomeIcon.png')}
-            style={{ width: 24, height: 24 }}
+            style={{ width: 24, height: 24,tintColor:selectedTab==0?'#927FDB':'#8e8e8e' }}
           />
         </TouchableOpacity>
         <TouchableOpacity
@@ -66,7 +66,7 @@ const Home = () => {
         >
           <Image
             source={require('../../assets/OrganizationIcon.png')}
-            style={{ width: 24, height: 24 }}
+            style={{ width: 24, height: 24,tintColor:selectedTab==1?'#927FDB':'#8e8e8e' }}
           />
         </TouchableOpacity>
         <TouchableOpacity
@@ -98,7 +98,7 @@ const Home = () => {
         >
           <Image
             source={require('../../assets/ChatIcon.png')}
-            style={{ width: 24, height: 24 }}
+            style={{ width: 24, height: 24,tintColor:selectedTab==3?'#927FDB':'#8e8e8e' }}
           />
         </TouchableOpacity>
         <TouchableOpacity
@@ -114,7 +114,7 @@ const Home = () => {
         >
           <Image
             source={require('../../assets/ProfileIcon.png')}
-            style={{ width: 24, height: 24 }}
+            style={{ width: 24, height: 24,tintColor:selectedTab==4?'#927FDB':'#8e8e8e' }}
           />
         </TouchableOpacity>
       </View>

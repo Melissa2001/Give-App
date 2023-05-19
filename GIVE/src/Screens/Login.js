@@ -20,6 +20,8 @@ const Login = () => {
             setError("Please fill in your credentials");
         } else {
             console.log('Success');
+            navigation.navigate('Home')
+
         }
         if (email != "" && password != "") {
             setError("");
