@@ -1,11 +1,15 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View,ScrollView ,Dimensions} from 'react-native'
 import React from 'react'
+import Card from '../../Shared/Card';
 
+var { width } = Dimensions.get('window');
 const Main = () => {
+  
     return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <Text>Organization</Text>
-        </View>
+        <ScrollView contentContainerStyle={{ alignItems: 'center', justifyContent: 'center' ,width: width,marginTop: 50}}>
+          <Card/>
+        
+        </ScrollView>
       );
     }
 
