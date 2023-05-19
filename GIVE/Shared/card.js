@@ -1,54 +1,56 @@
 import React from "react";
-import {View,Text,StyleSheet,Dimensions,Image} from "react-native"
+import { View, Text, StyleSheet, Dimensions, Image } from "react-native"
 
-const card=()=>{
-    const image=require('../assets/organization.png')
-    const image2=require('../assets/Map_Pin.png')
-    const image3=require('../assets/Paper_Plane.png')
-    return(
+const Card = () => {
+    const image = require('../assets/organization.png')
+    const image2 = require('../assets/Map_Pin.png')
+    const image3 = require('../assets/Paper_Plane.png')
+    return (
         <View style={styles
-        .cardContainer}>
+            .cardContainer}>
             <Image style={styles.imageStyle} source={image}></Image>
             <View>
-            <Text style={styles.name}>Maryasadhanam</Text>
-            <Text style={styles.requirement}>1 requirement</Text>
-            <Image source={image3} style={{alignSelf:'flex-end',marginTop:-5,marginRight:-40}}></Image>
-            <Text style={{marginLeft:15,marginTop:5,color:'#ffffff'}}><Image source={image2} ></Image>Kizhathadiyoor,Palai</Text>
+                <Text style={styles.name}>Maryasadhanam</Text>
+                <Text style={styles.requirement}>1 requirement</Text>
+                <Image source={image3} style={styles.button}></Image>
+                <Text style={styles.location}><Image source={image2} ></Image>Kizhathadiyoor,Palai</Text>
             </View>
-            
+
         </View>
     )
 }
-const deviceWidth=Math.round(Dimensions.get('window').width)
-const styles=StyleSheet.create({
-    cardContainer:{
-        width:deviceWidth-40,
-        backgroundColor:'#927FDB',
-        height:120,
-        borderRadius:20,
-        marginTop:20,
-        marginBottom:20,
-        flexDirection:'row'
+const deviceWidth = Math.round(Dimensions.get('window').width)
+const styles = StyleSheet.create({
+    cardContainer: {
+        width: deviceWidth - 40,
+        backgroundColor: '#927FDB',
+        height: 120,
+        borderRadius: 20,
+        marginTop: 20,
+        marginBottom: 20,
+        flexDirection: 'row'
     },
-    imageStyle:{
-        height:120,
-        width:deviceWidth-280,
-        borderTopLeftRadius:20,
-        borderBottomLeftRadius:20
+    imageStyle: {
+        height: 120,
+        width: deviceWidth - 280,
+        borderTopLeftRadius: 20,
+        borderBottomLeftRadius: 20
     },
-    name:{
-        margin:15,
-        fontSize:18,
-        fontWeight:'bold',
-        color:'#ffffff'
+    name: {
+        margin: 15,
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#ffffff'
     },
-    requirement:{
-        marginLeft:15,
-        marginTop:-10,
-        fontSize:14,
-        fontWeight:'bold',
-        color:'#F59683'
-    }
+    requirement: {
+        marginLeft: 15,
+        marginTop: -10,
+        fontSize: 14,
+        fontWeight: 'bold',
+        color: '#F59683'
+    },
+    button: { alignSelf: 'flex-end', marginTop: -5, marginRight: -40 },
+    location: { marginLeft: 15, marginTop: 5, color: '#ffffff' }
 })
 
-export default card
+export default Card
