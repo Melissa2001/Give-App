@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, Image } from 'react-native';
+import { View, Text, TouchableOpacity, Image ,KeyboardAvoidingView} from 'react-native';
 import React, { useState } from 'react';
 import { useNavigation } from "@react-navigation/native";
 import Main from '../BottomNavigator/Main';
@@ -12,7 +12,7 @@ const Home = () => {
   const navigation = useNavigation();
 
   return (
-    <View style={{ flex: 1 }}>
+    <KeyboardAvoidingView style={{ flex: 1 }}>
       {selectedTab === 0 ? (
         <Main />
       ) : selectedTab === 1 ? (
@@ -118,7 +118,7 @@ const Home = () => {
           />
         </TouchableOpacity>
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 
