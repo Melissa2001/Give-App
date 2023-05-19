@@ -1,7 +1,7 @@
 import React from "react";
 import {View,Text,StyleSheet,Dimensions,Image} from "react-native"
 
-const Card=()=>{
+const card=()=>{
     const image=require('../assets/organization.png')
     const image2=require('../assets/Map_Pin.png')
     const image3=require('../assets/Paper_Plane.png')
@@ -51,4 +51,4 @@ const styles=StyleSheet.create({
     }
 })
 
-export default Card
+export default card
