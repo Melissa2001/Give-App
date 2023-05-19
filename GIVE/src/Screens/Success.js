@@ -33,7 +33,7 @@ const Success = () => {
             </FormContainer>
             <Image
                 source={image3}
-                style={{ alignSelf: 'center', resizeMode: 'contain' }}
+                style={{ alignSelf: 'center', resizeMode: 'contain'}}
             />
 
         </View>

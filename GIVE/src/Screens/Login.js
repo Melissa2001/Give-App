@@ -8,7 +8,7 @@ import CommonButton from '../../Shared/Form/CommonButton';
 import Error from '../../Shared/Error';
 
 const Login = () => {
-    const navigation=useNavigation();
+    const navigation = useNavigation();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState("");
@@ -30,7 +30,7 @@ const Login = () => {
         <View style={{ backgroundColor: '#ffffff', flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Image
                 source={image}
-                style={{alignSelf:'center',resizeMode:'contain'}}
+                style={{ alignSelf: 'center', resizeMode: 'contain' }}
             />
             <FormContainer title={"Hey, Welcome!"} >
 
@@ -51,17 +51,17 @@ const Login = () => {
                 />
 
 
-                <Text style={{ marginLeft:250, color: '#f59683', fontSize: 15 ,marginTop:-10}}  onPress={()=>{navigation.navigate('ForgotPass')}}>Forgot Password
+                <Text style={{ marginLeft: 250, color: '#f59683', fontSize: 15, marginTop: -10 }} onPress={() => { navigation.navigate('ForgotPass') }}>Forgot Password
                 </Text>
                 {/* <Text style={{ position: 'absolute', top: 210, right: 37, color: '#434343', fontSize: 15 }}>Forgot Password
                 </Text> */}
-
+                {error ? <Error message={error} /> : null}
                 <CommonButton title={'Log In'} bgColor={'#9683dd'} textColor={'#ffffff'}
                     onPress={() => { handleSubmit() }} />
 
                 <Text style={styles.middleText}>
                     New User?
-                    <Text style={{ color: '#f59683' ,textDecorationLine:'underline'}} onPress={()=>{navigation.navigate('SignUp')}}> Create New Account</Text>
+                    <Text style={{ color: '#f59683', textDecorationLine: 'underline' }} onPress={() => { navigation.navigate('SignUp') }}> Create New Account</Text>
 
                 </Text>
 
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
         alignSelf: "center",
         marginTop: 50,
         color: '#979797',
-        fontSize:15,
+        fontSize: 15,
         textAlign: 'center'
     }
 })
