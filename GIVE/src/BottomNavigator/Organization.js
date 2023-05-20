@@ -3,7 +3,7 @@ import React from 'react'
 import Card from '../../Shared/Card';
 
 var { width } = Dimensions.get('window');
-const Main = () => {
+const Organization = () => {
   
     return (
         <ScrollView contentContainerStyle={{ alignItems: 'center', justifyContent: 'center' ,width: width,marginTop: 50}}>
@@ -12,4 +12,4 @@ const Main = () => {
         </ScrollView>
       );
     }
-export default Main
+export default Organization

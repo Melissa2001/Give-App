@@ -1,14 +1,27 @@
-import { View, Text, StyleSheet } from 'react-native'
-import React, { useState } from 'react';
+import { View,ScrollView ,Dimensions} from 'react-native'
+import React from 'react'
 
 
+
+import Card from '../../Shared/Card';
 import Search from '../../Shared/Search';
+import ProductContainer from '../../Shared/Products/ProductContainer'
 
-const Main = () => {
+var { width } = Dimensions.get('window');
+const Organization = () => {
+  
     return (
-      <View >
-          <Search />
-      </View>
+        
+        <View>
+          <ScrollView contentContainerStyle={{ alignItems: 'center', justifyContent: 'center' ,width: width,marginTop: 50}}>
+          <Search/>
+          <Card style={{marginTop:50}}/>
+        </ScrollView>
+        <View>
+          <ProductContainer/>
+        </View>
+
+        </View>
       );
     }
-export default Main
+export default Organization

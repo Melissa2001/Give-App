@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { View, TextInput, StyleSheet, SafeAreaView } from 'react-native';
+import { View, TextInput, StyleSheet, SafeAreaView,Dimensions } from 'react-native';
 
 
+var { width } = Dimensions.get('window');
 const SearchBar = () => {
   const [searchText, setSearchText] = useState("");
 
@@ -24,12 +25,14 @@ const SearchBar = () => {
   );
 };
 
+const deviceWidth = Math.round(Dimensions.get('window').width)
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    marginTop:50
+    marginTop:20
   },
   container: {
+    width: deviceWidth - 40,
     margin: 10,
   },
   input: {
