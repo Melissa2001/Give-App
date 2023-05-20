@@ -7,6 +7,9 @@ import Input from '../../Shared/Form/Input';
 import CommonButton from '../../Shared/Form/CommonButton';
 import Error from '../../Shared/Error';
 
+import axios from "axios";
+import baseURL from '../../assets/common/baseUrl';
+
 const Login = () => {
     const navigation = useNavigation();
     const [email, setEmail] = useState('');
@@ -15,13 +18,20 @@ const Login = () => {
 
     const image = require('../../assets/login.png');
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         if (email === "" || password === "") {
             setError("Please fill in your credentials");
         } else {
-            console.log('Success');
-            navigation.navigate('Home')
-
+            try {
+                const response = await axios.post(`${baseURL}users/login`, { email, password });
+                if (response.status === 200) {
+                    console.log('Success');
+                    navigation.navigate('Home')
+                }
+              } catch (error) {
+                console.error(error);
+                setError("Something went wrong. Please try again.");
+              }
         }
         if (email != "" && password != "") {
             setError("");
