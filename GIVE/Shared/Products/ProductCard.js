@@ -4,7 +4,8 @@ import {
     StyleSheet,
     Dimensions,
     Image,
-    Button
+    Button,
+    ScrollView
  } from 'react-native'
 import React from 'react'
 
@@ -14,7 +15,7 @@ var {width}=Dimensions.get("window")
 const ProductCard = (props) => {
     const {name,image,countInStock}=props;
   return (
-    <View style={StyleSheet.container}>
+    <ScrollView style={StyleSheet.container}>
         <Image 
         style={styles.image}
         resizeMode='contain'
@@ -26,15 +27,8 @@ const ProductCard = (props) => {
                 +'...':name
             }
         </Text>
-
-      {countInStock>0?(
-        <View style={{marginBottom:60}}>
-            <Button title={'Buy'} color={'green'}/>
-
-
-        </View>
-      ):<Text style={{marginTop:20}}>Currently Unavailable</Text>}
-    </View>
+        {countInStock > 0 ? null : <Text style={{ marginTop: 20 }}>Currently Unavailable</Text>}
+    </ScrollView>
   )
 }
 
@@ -59,10 +53,10 @@ const styles =StyleSheet.create({
         top:-45
     },
     card:{
-        marginBottom:10,
+        marginBottom:100,
         height:width/2-20-90,
         backgroundColor:'transparent',
-        width:width/2-20-10
+        width:width/2-20-10,
     },
     title:{
         fontWeight:'bold',
