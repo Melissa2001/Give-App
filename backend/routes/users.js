@@ -29,4 +29,20 @@ router.post('/login', async (req, res) => {
     }
   });
 
+  router.post('/reg', async (req, res) => {
+    let user=new User({
+        name:req.body.name,
+        email:req.body.email,
+        password:req.body.password,
+        regNo:req.body.regno,
+        })
+    
+        user=await user.save();
+        if(!user)
+        return res.status(400).send('User Cannot be created');
+    
+        res.send(user);
+  });
+
+
   module.exports =router;

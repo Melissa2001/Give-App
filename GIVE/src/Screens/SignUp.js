@@ -7,6 +7,10 @@ import Input from '../../Shared/Form/Input';
 import CommonButton from '../../Shared/Form/CommonButton';
 import Error from '../../Shared/Error';
 import { useNavigation } from "@react-navigation/native";
+
+import axios from "axios";
+import baseURL from '../../assets/common/baseUrl';
+
 const SignUp = () => {
     const navigation = useNavigation();
     const [email, setEmail] = useState('');
@@ -15,14 +19,24 @@ const SignUp = () => {
     const [regno, setRegno] = useState("");
     const [error, setError] = useState("");
     const image = require('../../assets/give2.png');
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         if (email === "" || password === "" || name==="") {
-            setError("Please fill in your credentials");
+            setError("Please fill in your credential");
         } 
         else {
-            console.log('Success');
-            setError("");
-            navigation.navigate('OTP')
+            try {
+                const response = await axios.post(`${baseURL}users/reg`, { email, password,name,regno });
+                if (response.status === 200) {
+                    console.log('Success');
+                    navigation.navigate('OTP')
+                }
+              } catch (error) {
+                console.error(error);
+                setError("Something went wrong. Please try again.");
+              }
+            // console.log('Success');
+            // setError("");
+            // navigation.navigate('OTP')
         }
     }
     return (
