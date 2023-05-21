@@ -1,6 +1,6 @@
 import { View,ScrollView ,Dimensions} from 'react-native'
 import React from 'react'
-import Card from '../../Shared/card';
+import Card from '../../Shared/Card';
 
 var { width } = Dimensions.get('window');
 const Organization = () => {
