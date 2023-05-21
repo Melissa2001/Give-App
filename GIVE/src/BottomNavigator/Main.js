@@ -3,7 +3,7 @@ import React from 'react'
 
 
 
-import Card from '../../Shared/card';
+import Card from '../../Shared/Card';
 import Search from '../../Shared/Search';
 import ProductContainer from '../../Shared/Products/ProductContainer'
 
