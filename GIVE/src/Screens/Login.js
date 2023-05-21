@@ -33,9 +33,9 @@ const Login = () => {
                 setError("Something went wrong. Please try again.");
               }
         }
-        if (email != "" && password != "") {
-            setError("");
-        }
+         if (email != "" && password != "" ) {
+             setError("Invalid username or password");
+         }
     }
 
     return (
