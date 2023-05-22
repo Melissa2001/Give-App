@@ -10,6 +10,16 @@ import OTP from "./Screens/OTP";
 import NewPass from "./Screens/NewPass";
 import Success from "./Screens/Success";
 import Home from "./Screens/Home";
+import Sell from '../src/BottomNavigator/Sell'
+import MedicalForm from './Screens/SellForms/MedicalForm';
+import ClothForm from './Screens/SellForms/ClothForm';
+import BookForm from './Screens/SellForms/BookForm';
+import VolunteeringForm from './Screens/SellForms/VolunteeringForm';
+import OthersForm from './Screens/SellForms/OthersForm';
+
+
+
+
 
 const Stack = createNativeStackNavigator();
 
@@ -63,6 +73,42 @@ const AppNavigator = () => {
           options={{ headerShown: false }}
           name="Home"
           component={Home}
+        />
+
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="Sell"
+          component={Sell}
+        />
+
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="MedicalForm"
+          component={MedicalForm}
+        />
+
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="ClothForm"
+          component={ClothForm}
+        />
+
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="BookForm"
+          component={BookForm}
+        />
+
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="VolunteeringForm"
+          component={VolunteeringForm}
+        />
+
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="OthersForm"
+          component={OthersForm}
         />
 
       </Stack.Navigator>
