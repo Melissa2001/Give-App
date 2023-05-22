@@ -1,14 +1,15 @@
 import React from 'react';
-import { View, Text, FlatList, TouchableOpacity, Dimensions, StyleSheet } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, Dimensions, StyleSheet ,Image} from 'react-native';
+
 
 const { width } = Dimensions.get('window');
 const cardWidth = (width - 20) / 2; 
 const data = [
-  { id: '1', title: 'Medical Appliances',color:'#FBDBD4' },
-  { id: '2', title: 'Cloths',color:'#FAECD3' },
-  { id: '3', title: 'Food',color:'#E7D4C1' },
-  { id: '4', title: 'Volunteering',color:'#C4ECE0' },
-  { id: '5', title: 'Others',color:'#CADCE6' },
+  { id: '1', title: 'Medical Appliances',color:'#FBDBD4' ,image:require('../assets/medicalIcon.png')},
+  { id: '2', title: 'Cloths',color:'#FAECD3',image:require('../assets/clothIcon.png') },
+  { id: '3', title: 'Books',color:'#E7D4C1',image:require('../assets/booksIcon.png') },
+  { id: '4', title: 'Volunteering',color:'#C4ECE0',image:require('../assets/volunteeringIcon.png') },
+  { id: '5', title: 'Others',color:'#CADCE6',image:require('../assets/othersIcon.png') },
 ];
 
 const CategoriesCard = () => {
@@ -16,7 +17,8 @@ const CategoriesCard = () => {
     const cardStyle = { ...styles.card, backgroundColor: item.color };
     return (
       <TouchableOpacity style={cardStyle}>
-        <Text>{item.title}</Text>
+        <Image source={item.image} style={styles.cardImage} />
+        <Text style={styles.cardTitle}>{item.title}</Text>
       </TouchableOpacity>
     );
   };
@@ -52,6 +54,19 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     marginHorizontal: 5,
   },
+  cardTitle:{
+    color:'grey',
+    fontSize: 14,
+    textAlign: 'center',
+    marginBottom: -5,
+  },
+  cardImage: {
+    width: 50,
+    height: 50,
+    marginBottom: 10,
+    alignSelf: 'center',
+  },
+  
 });
 
 export default CategoriesCard;
