@@ -1,25 +1,25 @@
 import { View, Text, StyleSheet } from 'react-native';
 import React from 'react';
 
-const BookForm = () => {
+import UploadImage from '../../../Shared/UploadImage';
+
+const MedicalForm = () => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>BookForm</Text>
+    <View >
+      <UploadImage/>
+      <Text style={styles.text}>Books</Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   text: {
-    textAlign: 'center',
-    fontSize: 24,
-    fontWeight: 'bold',
+    marginTop:20,
+    marginLeft:30,
+    color:'grey',
+    fontSize: 18,
+    fontStyle:'italic',
+
   },
 });
-
-export default BookForm;
+export default MedicalForm;
