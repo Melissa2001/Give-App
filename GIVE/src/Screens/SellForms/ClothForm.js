@@ -7,7 +7,6 @@ const MedicalForm = () => {
   return (
     <View >
       <UploadImage/>
-      <Text style={styles.text}>Cloths</Text>
     </View>
   );
 };
