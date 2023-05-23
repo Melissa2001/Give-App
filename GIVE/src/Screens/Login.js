@@ -26,16 +26,18 @@ const Login = () => {
                 const response = await axios.post(`${baseURL}users/login`, { email, password });
                 if (response.status === 200) {
                     console.log('Success');
+                    setError("");
                     navigation.navigate('Home')
                 }
               } catch (error) {
                 console.error(error);
-                setError("Something went wrong. Please try again.");
-              }
+                if (error.response && error.response.data && error.response.data.message) {
+                    setError(error.response.data.message);
+                } else {
+                    setError("Something went wrong. Please try again.");
+                }
+            }
         }
-         if (email != "" && password != "" ) {
-             setError("Invalid username or password");
-         }
     }
 
     return (
