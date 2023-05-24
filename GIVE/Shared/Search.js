@@ -2,12 +2,24 @@ import React, { useState } from 'react';
 import { View, TextInput, StyleSheet, SafeAreaView,Dimensions } from 'react-native';
 
 
+import axios from "axios";
+import baseURL from '../assets/common/baseUrl';
+
 var { width } = Dimensions.get('window');
 const SearchBar = () => {
   const [searchText, setSearchText] = useState("");
 
-  const handleSearch = (text) => {
+  const handleSearch = async(text) => {
     setSearchText(text);
+    try {
+      const response = await axios.get(`${baseURL}products/search?query=${text}`);
+      const products = response.data;
+      
+      // Process the received products or update the state as needed
+      console.log(products);
+    } catch (error) {
+      console.error('An error occurred while searching for products:', error);
+    }
     // Perform search logic here based on the text
   };
 
