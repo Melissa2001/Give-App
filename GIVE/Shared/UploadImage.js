@@ -1,11 +1,10 @@
 import { View, Text, Image, StyleSheet, Pressable } from 'react-native';
 import React from 'react';
 import * as ImagePicker from 'expo-image-picker';
-
 import SellForm from '../Shared/SellForm';
 
 
-const UploadImage = () => {
+const UploadImage = ({ categoryName }) => {
   const pickImageAsync = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       allowsEditing: true,
@@ -28,7 +27,7 @@ const UploadImage = () => {
         <Image source={ImagePickerIcon} style={styles.icon} />
       </Pressable>
       <Text style={styles.text}>Upload Image</Text>
-      <SellForm />
+      <SellForm categoryName={categoryName} />
 
     </View>
   );

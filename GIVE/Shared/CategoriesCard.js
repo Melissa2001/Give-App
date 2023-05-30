@@ -17,15 +17,15 @@ const CategoriesCard = () => {
 
   const handleCardPress = (item) => {
     if (item.id === '1') {
-      navigation.navigate('MedicalForm');
+      navigation.navigate('MedicalForm', { categoryName: item.title });
     } else if (item.id === '2') {
-      navigation.navigate('ClothForm');
+      navigation.navigate('ClothForm', { categoryName: item.title });
     } else if (item.id === '3') {
-      navigation.navigate('BookForm');
+      navigation.navigate('BookForm', { categoryName: item.title });
     } else if (item.id === '4') {
-      navigation.navigate('VolunteeringForm');
+      navigation.navigate('VolunteeringForm', { categoryName: item.title });
     } else {
-      navigation.navigate('OthersForm');
+      navigation.navigate('OthersForm', { categoryName: item.title });
     }
   };
 

@@ -19,5 +19,22 @@ router.get('/search', async (req, res) => {
       res.status(500).json({ error: 'An error occurred while searching for products' });
     }
   });
+
+  router.post('/sell', async (req, res) => {
+    let product=new Product({
+        category:req.body.categoryId,
+        brand:req.body.type,
+        name:req.body.title,
+        description:req.body.description,
+        Audience:req.body.targetAudience,
+        })
+    
+        product=await product.save();
+        if(!product)
+        return res.status(400).send('Product Cannot be created');
+    
+        res.send(product);;
+  });
+
   
   module.exports = router;
