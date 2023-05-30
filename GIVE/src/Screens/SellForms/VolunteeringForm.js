@@ -3,7 +3,7 @@ import React from 'react';
 
 import UploadImage from '../../../Shared/UploadImage';
 
-const MedicalForm = () => {
+const VolunteeringForm = () => {
   return (
     <View >
       <UploadImage/>
@@ -21,4 +21,4 @@ const styles = StyleSheet.create({
 
   },
 });
-export default MedicalForm;
+export default VolunteeringForm;

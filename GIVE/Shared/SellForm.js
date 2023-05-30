@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet,Dimensions } from 'react-native';
-
 import CommonButton from './Form/CommonButton';
-const SellForm = () => {
+import axios from "axios";
+import baseURL from '../assets/common/baseUrl';
+import Error from '../Shared/Error';
+
+const SellForm = ({categoryName}) => {
   const [type, setType] = useState('');
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [targetAudience, setTargetAudience] = useState('');
+  const [error, setError] = useState("");
 
   const handleTypeChange = (text) => {
     setType(text);
@@ -23,9 +27,40 @@ const SellForm = () => {
   const handleAudienceSelection = (audience) => {
     setTargetAudience(audience);
   };
+  
+  const handleSubmit = async() => {
+    try {
+      setError("");
+      if (!categoryName) {
+        // Handle the case when the categoryName prop is missing
+        console.error('CategoryName prop is required');
+        return;
+      }
 
-  const handleSubmit = () => {
-    console.log('Form submitted:', { type, title, description, targetAudience });
+      const categoryResponse = await axios.get(`${baseURL}categories?name=${categoryName}`);
+      const category = categoryResponse.data;
+      
+      if (!category) {
+        // Handle the case when the category is not found
+        console.error('Category not found');
+        return;
+      }
+
+      const response = await axios.post(`${baseURL}products/sell`, { categoryId:category._id,type,title,description,targetAudience });
+      if (response.status === 200) {
+          console.log('Success');
+          setError("Posted Sucessfully");
+         
+      }
+    } catch (error) {
+      console.error(error);
+                if (error.response && error.response.data && error.response.data.message) {
+                    setError(error.response.data.message);
+                } else {
+                    setError("Something went wrong. Please try again.");
+                }
+    }
+    console.log('Form submitted:', { type, title, description, targetAudience,categoryName });
   };
   return (
     <View style={styles.container}>
@@ -63,7 +98,7 @@ const SellForm = () => {
       >
         <Text style={styles.buttonText}>Common Use</Text>
       </TouchableOpacity>
-
+      {error ? <Error message={error} /> : null}
       
 
       <CommonButton title={'Submit'} bgColor={'#9683dd'} textColor={'#ffffff' } 

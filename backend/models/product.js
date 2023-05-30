@@ -3,14 +3,10 @@ const mongoose = require('mongoose');
 const productSchema = new mongoose.Schema({
     image: {
       type: String,
-      required: true
+      required: false
     },
     brand: {
       type: String,
-      required: true
-    },
-    isFeatured: {
-      type: Boolean,
       required: true
     },
     name: {
@@ -28,12 +24,14 @@ const productSchema = new mongoose.Schema({
     },
     countInStock: {
       type: Number,
+      default:1,
       required: true
     },
-    __v: {
-      type: Number,
-      default: 0
-    }
+    Audience:{
+      type:String,
+      default:"Common Use",
+      required:true
+    },
   });
 
 productSchema.virtual('id').get(function (){
