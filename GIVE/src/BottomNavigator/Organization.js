@@ -1,15 +1,17 @@
-import { View,ScrollView ,Dimensions} from 'react-native'
+import {View ,Dimensions} from 'react-native'
 import React from 'react'
-import Card from '../../Shared/Card';
+import OrganizationContainer from '../../Shared/Organization/OrganizationContainer';
+
 
 var { width } = Dimensions.get('window');
 const Organization = () => {
   
     return (
-        <ScrollView contentContainerStyle={{ alignItems: 'center', justifyContent: 'center' ,width: width,marginTop: 50}}>
-          <Card/>
+        //<ScrollView contentContainerStyle={{ alignItems: 'center', justifyContent: 'center' ,width: width,marginTop: 50}}>
+        <View style={{ alignItems: 'center', justifyContent: 'center' ,width: width,marginTop: 100,marginBottom:70}}><OrganizationContainer/></View>
+          
         
-        </ScrollView>
+        //</ScrollView>
       );
     }
 export default Organization
