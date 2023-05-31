@@ -3,11 +3,12 @@ import React from 'react';
 
 import UploadImage from '../../../Shared/UploadImage';
 
-const MedicalForm = () => {
+const ClothForm = ({ route }) => {
+  const { categoryName } = route.params;
+
   return (
-    <View >
-      <UploadImage/>
-      <Text style={styles.text}>Cloths</Text>
+    <View>
+      <UploadImage categoryName={categoryName} />
     </View>
   );
 };
@@ -22,4 +23,4 @@ const styles = StyleSheet.create({
 
   },
 });
-export default MedicalForm;
+export default ClothForm;
