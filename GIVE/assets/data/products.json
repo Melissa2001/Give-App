@@ -48,7 +48,7 @@
     "_id": {
       "$oid": "5f15d9b3e520d44421ed8e9d"
     },
-    "image": "",
+    "image": "https://img.freepik.com/premium-photo/wooden-park-bench-white-background_476612-10076.jpg",
     "brand": "OBI",
     "isFeatured": true,
     "name": "Wooden Bench",
@@ -78,7 +78,7 @@
     "_id": {
       "$oid": "7f15d9b3e520d44421ed8e9e"
     },
-    "image": "",
+    "image": "https://img.freepik.com/premium-photo/wooden-park-bench-white-background_476612-10076.jpg",
     "brand": "JAE",
     "isFeatured": true,
     "name": "Wooden Bench",
