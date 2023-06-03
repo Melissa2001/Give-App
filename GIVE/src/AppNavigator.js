@@ -16,6 +16,7 @@ import ClothForm from './Screens/SellForms/ClothForm';
 import BookForm from './Screens/SellForms/BookForm';
 import VolunteeringForm from './Screens/SellForms/VolunteeringForm';
 import OthersForm from './Screens/SellForms/OthersForm';
+import Details from "../Shared/Details";
 
 
 
@@ -109,6 +110,12 @@ const AppNavigator = () => {
           options={{ headerShown: false }}
           name="OthersForm"
           component={OthersForm}
+        />
+
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="Details"
+          component={Details}
         />
 
       </Stack.Navigator>

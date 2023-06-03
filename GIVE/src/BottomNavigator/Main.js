@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, Dimensions, Image, ScrollView } from 'react-native';
-import { NativeBaseProvider, HStack, Center } from 'native-base';
+import { View, Dimensions, Image, ScrollView, TouchableOpacity } from 'react-native';
+import { NativeBaseProvider, HStack, Center, Text } from 'native-base';
 
 import Card from '../../Shared/Card';
 import Search from '../../Shared/Search';
@@ -15,6 +15,24 @@ const Main = () => {
   const VolunImage = require('../../assets/volunteeringIcon.png');
   const OtherImage = require('../../assets/othersIcon.png');
 
+  const handleCirclePress = (category) => {
+    // Handle the circle press event
+    console.log('Categories pressed:', category);
+  };
+
+  const renderCircle = (image, label) => {
+    return (
+      <TouchableOpacity onPress={() => handleCirclePress(label)}>
+        <View>
+          <Center h="20" w="20" bg="#E2B9B0" rounded="full" shadow={3}>
+            <Image source={image} style={{ width: 40, height: 40 }} />
+          </Center>
+          <Text style={styles.circleText}>{label}</Text>
+        </View>
+      </TouchableOpacity>
+    );
+  };
+
   return (
     <NativeBaseProvider>
       <View style={styles.container}>
@@ -27,20 +45,20 @@ const Main = () => {
             </View>
 
             <HStack space={3} justifyContent="center" style={{ marginTop: 20, marginBottom: 20 }}>
-              <Center h="20" w="20" bg="#E2B9B0" rounded="full" shadow={3}>
-                <Image source={MedicalImage} style={{ width: 18, height: 18 }} />
+              <Center>
+                {renderCircle(MedicalImage, 'Medical')}
               </Center>
-              <Center h="20" w="20" bg="#F4D8A5" rounded="full" shadow={3}>
-                <Image source={ClothImage} style={{ width: 18, height: 18 }} />
+              <Center>
+                {renderCircle(ClothImage, 'Cloth')}
               </Center>
-              <Center h="20" w="20" bg="#DBC9B7" rounded="full" shadow={3}>
-                <Image source={BookImage} style={{ width: 18, height: 18 }} />
+              <Center>
+                {renderCircle(BookImage, 'Books')}
               </Center>
-              <Center h="20" w="20" bg="#55C7A6" rounded="full" shadow={3}>
-                <Image source={VolunImage} style={{ width: 18, height: 18 }} />
+              <Center>
+                {renderCircle(VolunImage, 'Volunteer')}
               </Center>
-              <Center h="20" w="20" bg="#A9C6D7" rounded="full" shadow={3}>
-                <Image source={OtherImage} style={{ width: 18, height: 18 }} />
+              <Center>
+                {renderCircle(OtherImage, 'Others')}
               </Center>
             </HStack>
             <ProductContainer />
@@ -58,6 +76,13 @@ const styles = {
   topBar: {
     height: 100,
     backgroundColor: '#ffffff',
+  },
+  circleText: {
+    marginTop: 5,
+    textAlign: 'center',
+    fontSize: 10,
+    color: 'grey',
+    marginBottom: 20,
   },
 };
 

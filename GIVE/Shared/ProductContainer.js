@@ -1,14 +1,19 @@
 import React from 'react';
 import { View, ScrollView, Image, Text, Dimensions, StyleSheet, TouchableOpacity } from 'react-native';
+import { useNavigation } from "@react-navigation/native";
 
+import Details from './Details';
 import products from '../assets/data/products.json';
 const { width, height } = Dimensions.get('window');
 
 const ProductsContainer = () => {
   const cardWidth = width * 0.4;
   const cardMargin = width * 0.04;
+  const navigation = useNavigation();
+
 
   const handleCardPress = (productId) => {
+    navigation.navigate('Details')
     // Handle the card press event
     console.log('Card pressed:', productId);
   };
@@ -47,19 +52,31 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     height: height * 0.3,
     borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 8,
-    padding: 8,
+    borderColor: '#e5e5e5',
+    borderRadius: 20,
+    overflow: 'hidden',
+    backgroundColor: '#fff',
+    elevation: 2, 
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
   },
+  
   productImage: {
     width: '100%',
     height: '60%',
     resizeMode: 'cover',
+    
   },
   productName: {
     fontSize: 16,
     fontWeight: 'bold',
-    marginTop: 8,
+    marginTop: 20,
+    marginLeft:20,
+    color:'grey',
   },
 });
 
