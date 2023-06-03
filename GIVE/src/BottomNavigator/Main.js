@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Dimensions, Image, ScrollView, TouchableOpacity } from 'react-native';
 import { NativeBaseProvider, HStack, Center, Text } from 'native-base';
 
 import Card from '../../Shared/Card';
 import Search from '../../Shared/Search';
 import ProductContainer from '../../Shared/ProductContainer';
+import Details from '../../Shared/Details';
 
 const { width } = Dimensions.get('window');
 
@@ -15,6 +16,8 @@ const Main = () => {
   const VolunImage = require('../../assets/volunteeringIcon.png');
   const OtherImage = require('../../assets/othersIcon.png');
 
+
+  
   const handleCirclePress = (category) => {
     // Handle the circle press event
     console.log('Categories pressed:', category);
