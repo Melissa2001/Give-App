@@ -22,7 +22,7 @@ const Login = () => {
         if (email === "" || password === "") {
             setError("Please fill in your credentials");
         } else {
-            try {
+            try {  
                 const response = await axios.post(`${baseURL}users/login`, { email, password });
                 if (response.status === 200) {
                     console.log('Success');
