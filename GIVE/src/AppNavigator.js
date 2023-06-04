@@ -17,6 +17,7 @@ import BookForm from './Screens/SellForms/BookForm';
 import VolunteeringForm from './Screens/SellForms/VolunteeringForm';
 import OthersForm from './Screens/SellForms/OthersForm';
 import Details from "../Shared/Details";
+import CategoriesMain from "../Shared/CategoriesMain";
 
 
 
@@ -74,7 +75,7 @@ const AppNavigator = () => {
           options={{ headerShown: false }}
           name="Home"
           component={Home}
-        />
+        />   
 
         <Stack.Screen
           options={{ headerShown: false }}
@@ -117,6 +118,14 @@ const AppNavigator = () => {
           name="Details"
           component={Details}
         />
+
+        
+        <Stack.Screen
+          options={({ route }) => ({ headerShown: true, title: route.params.category })}
+          name="CategoriesMain"
+          component={CategoriesMain}
+        />
+
 
       </Stack.Navigator>
     </NavigationContainer>

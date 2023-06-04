@@ -6,7 +6,7 @@ import Details from './Details';
 import products from '../assets/data/products.json';
 const { width, height } = Dimensions.get('window');
 
-const ProductsContainer = () => {
+const ProductsContainer = () => {   
   const cardWidth = width * 0.4;
   const cardMargin = width * 0.04;
   const navigation = useNavigation();

@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
 import { View, Dimensions, Image, ScrollView, TouchableOpacity } from 'react-native';
 import { NativeBaseProvider, HStack, Center, Text } from 'native-base';
+import { useNavigation } from "@react-navigation/native";
+
 
 import Card from '../../Shared/Card';
 import Search from '../../Shared/Search';
 import ProductContainer from '../../Shared/ProductContainer';
-import Details from '../../Shared/Details';
+import CategoriesMain from '../../Shared/CategoriesMain';
 
 const { width } = Dimensions.get('window');
 
 const Main = () => {
+  const navigation = useNavigation();
+
   const MedicalImage = require('../../assets/medicalIcon.png');
   const ClothImage = require('../../assets/clothIcon.png');
   const BookImage = require('../../assets/booksIcon.png');
@@ -19,8 +23,8 @@ const Main = () => {
 
   
   const handleCirclePress = (category) => {
-    // Handle the circle press event
-    console.log('Categories pressed:', category);
+    navigation.navigate('CategoriesMain', { category });
+    console.log('Categories pressed:', category);   
   };
 
   const renderCircle = (image, label) => {
