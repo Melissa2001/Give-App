@@ -1,20 +1,27 @@
 import React from "react";
-import { TouchableOpacity,View,Dimensions } from "react-native";
+import { TouchableOpacity, View, Dimensions } from "react-native";
 import OrganizationCard from "./OrganizationCard";
-
-var {width}=Dimensions.get("window")
-const OrganizationList=(props)=>{
-    const {item}=props
-    return(
-        <TouchableOpacity style={{width:'50%'}}>
-            <View style={{width:width}}
+import { useNavigation } from "@react-navigation/native";
+var { width } = Dimensions.get("window")
+const OrganizationList = (props) => {
+    
+      
+    const { item } = props
+    return (
+        <TouchableOpacity
+            style={{ width: '50%' }}
+            onPress={()=>
+                props.navigation.navigate("SingleOrg",{item:item})}
+           
             >
-<OrganizationCard {...item}/>
+            <View style={{ width: width }}
+            >
+                <OrganizationCard {...item} />
             </View>
         </TouchableOpacity>
     )
-        
-    
+
+
 }
 
 export default OrganizationList

@@ -2,7 +2,8 @@ import { View, Text, TouchableOpacity, Image ,KeyboardAvoidingView} from 'react-
 import React, { useState } from 'react';
 import { useNavigation } from "@react-navigation/native";
 import Main from '../BottomNavigator/Main';
-import Organization from '../BottomNavigator/Organization';
+//import Organization from '../BottomNavigator/Organization';
+import OrganizationContainer from '../../Shared/Organization/OrganizationContainer';
 import Sell from '../BottomNavigator/Sell';
 import Chat from '../BottomNavigator/Chat';
 import Profile from '../BottomNavigator/Profile';
@@ -16,7 +17,7 @@ const Home = () => {
       {selectedTab === 0 ? (
         <Main />
       ) : selectedTab === 1 ? (
-        <Organization />
+        <OrganizationContainer />
       ) : selectedTab === 2 ? (
         <Sell />
       ) : selectedTab === 3 ? (
