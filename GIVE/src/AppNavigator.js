@@ -19,7 +19,6 @@ import OthersForm from './Screens/SellForms/OthersForm';
 import Details from "../Shared/Details";
 import CategoriesMain from "../Shared/CategoriesMain";
 import SingleOrg from "../Shared/Organization/SingleOrg";
-import OrganizationContainer from "../Shared/Organization/OrganizationContainer";
 
 const Stack = createNativeStackNavigator();
 
@@ -129,11 +128,7 @@ const AppNavigator = () => {
           name="SingleOrg"
           component={SingleOrg}
         />
-      <Stack.Screen
-          options={{headerShown: true}}
-          name="OrganizationContainer"
-          component={OrganizationContainer}
-        />
+      
        
 
       </Stack.Navigator>

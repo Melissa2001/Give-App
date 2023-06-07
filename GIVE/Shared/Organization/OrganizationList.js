@@ -4,14 +4,14 @@ import OrganizationCard from "./OrganizationCard";
 import { useNavigation } from "@react-navigation/native";
 var { width } = Dimensions.get("window")
 const OrganizationList = (props) => {
-    
-      
+
+      const navigation=useNavigation();
     const { item } = props
     return (
         <TouchableOpacity
             style={{ width: '50%' }}
             onPress={()=>
-                props.navigation.navigate("SingleOrg",{item:item})}
+                navigation.navigate("SingleOrg",{item:item})}
            
             >
             <View style={{ width: width }}
