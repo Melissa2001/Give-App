@@ -1,17 +1,35 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, ScrollView, Image, Text, Dimensions, StyleSheet, TouchableOpacity } from 'react-native';
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation } from '@react-navigation/native';
+import axios from 'axios';
+import baseURL from '../assets/common/baseUrl';
 
 import Details from './Details';
 import products from '../assets/data/products.json';
 const { width, height } = Dimensions.get('window');
 
-const ProductsContainer = () => {   
+const ProductsContainer = ({ categoryName }) => {
+  const [products, setProducts] = useState([]);
   const cardWidth = width * 0.4;
   const cardMargin = width * 0.04;
   const navigation = useNavigation();
 
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
+  const fetchProducts = async () => {
+    try {
+      console.log(categoryName)
+      const response = await axios.get(`${baseURL}categories?name=${categoryName}`);
+    const categoryId = response.data._id;
+    console.log(categoryId);
+    const response1 = await axios.get(`${baseURL}products/sections?category=${categoryId}`);
+      setProducts(response1.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   const handleCardPress = (productId) => {
     navigation.navigate('Details')
     // Handle the card press event
@@ -80,4 +98,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ProductsContainer;
+export default ProductsContainer; 
