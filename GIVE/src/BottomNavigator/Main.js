@@ -8,6 +8,7 @@ import Card from '../../Shared/Card';
 import Search from '../../Shared/Search';
 import ProductContainer from '../../Shared/ProductContainer';
 import CategoriesMain from '../../Shared/CategoriesMain';
+import OrganizationCard from '../../Shared/Organization/OrganizationCard';
 
 const { width } = Dimensions.get('window');
 
@@ -46,7 +47,7 @@ const Main = () => {
           <View style={{ alignItems: 'center', marginTop: 10 }}>
             <Search />
             <View style={{ alignItems: 'center', marginTop: 10 }}>
-              <Card />
+              <OrganizationCard></OrganizationCard>
             </View>
 
             <HStack space={3} justifyContent="center" style={{ marginTop: 20, marginBottom: 20 }}>

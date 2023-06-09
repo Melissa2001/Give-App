@@ -4,10 +4,10 @@ import OrganizationContainer from '../../Shared/Organization/OrganizationContain
 
 
 var { width } = Dimensions.get('window');
-const Organization = () => {
+const Organization = (props) => {
   
     return (
-        //<ScrollView contentContainerStyle={{ alignItems: 'center', justifyContent: 'center' ,width: width,marginTop: 50}}>
+        
         <View style={{ alignItems: 'center', justifyContent: 'center' ,width: width,marginTop: 100,marginBottom:70}}><OrganizationContainer/></View>
           
         

@@ -18,10 +18,7 @@ import VolunteeringForm from './Screens/SellForms/VolunteeringForm';
 import OthersForm from './Screens/SellForms/OthersForm';
 import Details from "../Shared/Details";
 import CategoriesMain from "../Shared/CategoriesMain";
-
-
-
-
+import SingleOrg from "../Shared/Organization/SingleOrg";
 
 const Stack = createNativeStackNavigator();
 
@@ -75,7 +72,7 @@ const AppNavigator = () => {
           options={{ headerShown: false }}
           name="Home"
           component={Home}
-        />   
+        />
 
         <Stack.Screen
           options={{ headerShown: false }}
@@ -119,13 +116,20 @@ const AppNavigator = () => {
           component={Details}
         />
 
-        
+
         <Stack.Screen
           options={({ route }) => ({ headerShown: true, title: route.params.category })}
           name="CategoriesMain"
           component={CategoriesMain}
         />
 
+        <Stack.Screen
+          options={{headerShown: true}}
+          name="SingleOrg"
+          component={SingleOrg}
+        />
+      
+       
 
       </Stack.Navigator>
     </NavigationContainer>
