@@ -2,18 +2,15 @@ import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 import CommonButton from './Form/CommonButton';
 
-const Details = () => {
-  const image = require('../assets/wheelchair.png');
+const Details = ({ route }) => {
+  const { product } = route.params;
 
   return (
     <View style={styles.container}>
-      <Image source={image} style={styles.image} />
-      <Text style={styles.heading}>Wheelchair</Text>
-      <Text style={styles.description}>
-        Despite its age, this wheelchair has been well-maintained and is in excellent condition.
-        It features a sturdy and durable frame, ensuring a safe and comfortable ride. The wheelchair
-        also includes padded armrests and a comfortable seat cushion for added comfort.
-      </Text>
+      <Image source={{ uri: product.image }} style={styles.image} />
+      <Text style={styles.heading}>{product.name}</Text>
+      <Text style={styles.description}>{product.description}</Text>
+      {/* Render other product details */}
       <Text style={styles.heading}>Contact</Text>
       <Text style={styles.contactname}>Ria Anna James</Text>
       <View style={styles.buttonContainer}>
@@ -37,6 +34,8 @@ const styles = StyleSheet.create({
   image: {
     marginTop: 40,
     alignSelf: 'center',
+    width: 200,
+    height: 200,
     borderRadius: 20,
   },
   heading: {
