@@ -19,12 +19,17 @@ const ProductsContainer = ({ categoryName }) => {
 
   const fetchProducts = async () => {
     try {
-      console.log(categoryName)
-      const response = await axios.get(`${baseURL}categories?name=${categoryName}`);
-    const categoryId = response.data._id;
-    console.log(categoryId);
-    const response1 = await axios.get(`${baseURL}products/sections?category=${categoryId}`);
-      setProducts(response1.data);
+      let response;
+      
+      if (categoryName) {
+        response = await axios.get(`${baseURL}categories?name=${categoryName}`);
+        const categoryId = response.data._id;
+        response = await axios.get(`${baseURL}products/sections?category=${categoryId}`);
+      } else {
+        response = await axios.get(`${baseURL}products`);
+      }
+
+      setProducts(response.data);
     } catch (error) {
       console.error(error);
     }
