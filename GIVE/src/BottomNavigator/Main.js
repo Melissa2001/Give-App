@@ -72,6 +72,8 @@ const Main = () => {
                 
               </Center>
             </HStack>
+            <Text style={styles.circleText}>Suggested Products</Text>
+            <ProductContainer/>
           </View>
         </ScrollView>
       </View>
