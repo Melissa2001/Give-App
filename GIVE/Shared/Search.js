@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import { View, TextInput, StyleSheet, SafeAreaView, Dimensions, Text, FlatList, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import axios from "axios";
 import baseURL from '../assets/common/baseUrl';
-
+import Details from './Details';
 var { width } = Dimensions.get('window');
 
 const SearchBar = () => {
   const [searchText, setSearchText] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
-
+  const navigation=useNavigation();
   const handleSearch = async (text) => {
     setSearchText(text);
     try {
@@ -23,6 +24,7 @@ const SearchBar = () => {
 
   const handleItemPress = (item) => {
     setSelectedItem(item);
+    navigation.navigate('Details', { product: item });
   };
 
   const renderProductItem = ({ item }) => (
