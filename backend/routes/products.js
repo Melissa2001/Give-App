@@ -24,7 +24,7 @@ router.get('/search', async (req, res) => {
 // Route for adding a new product
 router.post('/sell', async (req, res) => {
   try {
-    const { categoryId, type, title, description, targetAudience } = req.body;
+    const { categoryId, type, title, description, targetAudience,userId } = req.body;
 
     const product = new Product({
       category: categoryId,
@@ -32,6 +32,7 @@ router.post('/sell', async (req, res) => {
       name: title,
       description,
       audience: targetAudience,
+      userId:userId
     });
 
     await product.save();

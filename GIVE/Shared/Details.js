@@ -1,10 +1,27 @@
-import React from 'react';
+import React  from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 import CommonButton from './Form/CommonButton';
+import baseURL from '../assets/common/baseUrl';
+import { useState,useEffect} from 'react';
+import axios from 'axios';
 
 const Details = ({ route }) => {
   const { product } = route.params;
+  const [userName, setUserName] = useState('');
 
+  useEffect(() => {
+    fetchUserName();
+  }, []);
+
+  const fetchUserName = async () => {
+    try {
+      const response = await axios.get(`${baseURL}users/fetchUsername/${product.userId}`);
+      const { name } = response.data;
+      setUserName(name);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <View style={styles.container}>
       <Image source={{ uri: product.image }} style={styles.image} />
@@ -12,7 +29,7 @@ const Details = ({ route }) => {
       <Text style={styles.description}>{product.description}</Text>
       {/* Render other product details */}
       <Text style={styles.heading}>Contact</Text>
-      <Text style={styles.contactname}>Ria Anna James</Text>
+      <Text style={styles.contactname}>{userName}</Text>
       <View style={styles.buttonContainer}>
         <CommonButton
           onPress={() => {

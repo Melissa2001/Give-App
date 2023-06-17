@@ -44,5 +44,24 @@ router.post('/login', async (req, res) => {
         res.send(user);
   });
 
+  router.get('/fetchUsername/:id', async (req, res) => {
+    try {
+      const { id } = req.params;
+  
+      // Find the user by ID
+      const user = await User.findById(id);
+  
+      // If user is not found, return an error
+      if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+  
+      // Return the user's name
+      res.status(200).json({ name: user.name });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Server Error' });
+    }
+  });
 
   module.exports =router;
