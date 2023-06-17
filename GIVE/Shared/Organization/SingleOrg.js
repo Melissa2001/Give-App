@@ -9,8 +9,6 @@ const SingleOrg = (props) => {
     return (
 
         <ScrollView style={{ padding: 5 }}>
-
-
             <Image
                 source={{
                     uri: item.image ? item.image : 'https://cdn.pixabay.com/photo/2012/04/01/17/29/box-23649_960_720.png'
@@ -19,6 +17,7 @@ const SingleOrg = (props) => {
                 style={styles.image}
             />
             <Text style={styles.heading}>{item.name}</Text>
+            <Text style={styles.req}>requirements</Text>
             <Text style={styles.description}>{item.description}</Text>
             <View style={{ flexDirection: 'row' }}>
                 <TouchableOpacity
@@ -111,6 +110,13 @@ const styles = StyleSheet.create({
     qr:{
         alignSelf:'center',
         marginLeft:80
+    },
+    req:{
+        color:'red',
+        paddingLeft: 20,
+        paddingRight: 20,
+        fontSize: 18,
+        paddingBottom: 25
     },
     location: { marginLeft: 20, marginTop: 5, color: '#ffffff',fontWeight:'bold' }
 })
