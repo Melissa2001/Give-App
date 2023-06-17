@@ -5,10 +5,10 @@ const SingleOrg = (props) => {
 
     const [item, setItem] = useState(props.route.params.item);
     const [availability, setAvailability] = useState('');
-
+    const image=require('../../assets/qrcode.png')
     return (
 
-        <ScrollView style={{ marginBottom: 80, padding: 5 }}>
+        <ScrollView style={{ padding: 5 }}>
 
 
             <Image
@@ -20,16 +20,31 @@ const SingleOrg = (props) => {
             />
             <Text style={styles.heading}>{item.name}</Text>
             <Text style={styles.description}>{item.description}</Text>
-            <TouchableOpacity
-                style={styles.button}
-                onPress={() => {
-                    onPress();
-                }}>
-                <Text style={styles.buttonFont}>Message</Text>
-            </TouchableOpacity>
-           
-
-
+            <View style={{ flexDirection: 'row' }}>
+                <TouchableOpacity
+                    style={styles.button1}
+                    onPress={() => {
+                        onPress();
+                    }}>
+                    <Text style={styles.buttonFont}>Message</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.button2}
+                    onPress={() => {
+                        onPress();
+                    }}>
+                    <Text style={styles.buttonFont}>View Location</Text>
+                </TouchableOpacity>
+            </View>
+            <View style={styles
+                .cardContainer}>
+                <View>
+                    <Text style={styles.name}>Donate</Text>
+                    <Text style={styles.location}>Acc. No : 12345678</Text>
+                    <Text style={styles.location}>UPI ID : ybl@123456789</Text>
+                </View>
+                <Image style={styles.qr}source={image}></Image>
+            </View>
         </ScrollView>
 
     )
@@ -52,22 +67,52 @@ const styles = StyleSheet.create({
         paddingLeft: 20,
         paddingRight: 20,
         fontSize: 18,
-        paddingBottom:10
+        paddingBottom: 10
     },
-    button: {
+    button1: {
         backgroundColor: '#4caf50',
         width: 131,
         height: 38.86,
         borderRadius: 10,
-        margin: 20,    
+        margin: 30,
     },
-    buttonFont:{
-        fontSize:18,
-        color:'white',
-        fontWeight:'bold',
-       alignSelf:'center',
-       padding:5
-    }
+    button2: {
+        backgroundColor: '#F59683',
+        width: 131,
+        height: 38.86,
+        borderRadius: 10,
+        margin: 30,
+    },
+    buttonFont: {
+        fontSize: 18,
+        color: 'white',
+        fontWeight: 'bold',
+        alignSelf: 'center',
+        padding: 5
+    },
+    cardContainer: {
+        width: width-10,
+        backgroundColor: '#927FDB',
+        height: 120,
+        borderRadius: 20,
+        marginTop: 20,
+        marginBottom: 20,
+        flexDirection: 'row',
+        alignSelf:'center'
+    },
+    name: {
+        marginLeft: 20,
+        marginBottom:15,
+        marginTop:15,
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#ffffff'
+    },
+    qr:{
+        alignSelf:'center',
+        marginLeft:80
+    },
+    location: { marginLeft: 20, marginTop: 5, color: '#ffffff',fontWeight:'bold' }
 })
 
 export default SingleOrg
