@@ -13,6 +13,10 @@ const OrganizationList = (props) => {
             onPress={()=>
                 navigation.navigate("SingleOrg",{item:item})}
            
+=======
+                props.navigation.navigate("SingleOrg",{item:item})}
+              
+>>>>>>> Stashed changes
             >
             <View style={{ width: width }}
             >
