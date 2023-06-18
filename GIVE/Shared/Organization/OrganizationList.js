@@ -11,6 +11,7 @@ const OrganizationList = (props) => {
         <TouchableOpacity
             style={{ width: '50%' }}
             onPress={()=>
+<<<<<<< Updated upstream
                 navigation.navigate("SingleOrg",{item:item})}
            
 =======
