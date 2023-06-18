@@ -11,13 +11,10 @@ const OrganizationList = (props) => {
         <TouchableOpacity
             style={{ width: '50%' }}
             onPress={()=>
-<<<<<<< Updated upstream
                 navigation.navigate("SingleOrg",{item:item})}
            
-=======
-                props.navigation.navigate("SingleOrg",{item:item})}
+                // props.navigation.navigate("SingleOrg",{item:item})}
               
->>>>>>> Stashed changes
             >
             <View style={{ width: width }}
             >

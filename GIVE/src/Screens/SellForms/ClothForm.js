@@ -8,7 +8,7 @@ const ClothForm = ({ route }) => {
 
   return (
     <View>
-      <UploadImage categoryName={categoryName} />
+       <UploadImage includeSellForm={true} />
     </View>
   );
 };

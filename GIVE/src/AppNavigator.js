@@ -19,6 +19,7 @@ import OthersForm from './Screens/SellForms/OthersForm';
 import Details from "../Shared/Details";
 import CategoriesMain from "../Shared/CategoriesMain";
 import SingleOrg from "../Shared/Organization/SingleOrg";
+import EditProfile from "./Screens/EditProfile";
 
 const Stack = createNativeStackNavigator();
 
@@ -128,6 +129,13 @@ const AppNavigator = () => {
           name="SingleOrg"
           component={SingleOrg}
         />
+
+        <Stack.Screen
+          options={{headerShown: false }}
+          name="EditProfile"
+          component={EditProfile}
+        />
+
       
        
 

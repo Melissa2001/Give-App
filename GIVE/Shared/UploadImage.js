@@ -1,10 +1,9 @@
-import { View, Text, Image, StyleSheet, Pressable } from 'react-native';
 import React from 'react';
+import { View, Text, Image, StyleSheet, Pressable } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import SellForm from '../Shared/SellForm';
 
-
-const UploadImage = ({ categoryName }) => {
+const UploadImage = ({ includeSellForm }) => {
   const pickImageAsync = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       allowsEditing: true,
@@ -22,13 +21,12 @@ const UploadImage = ({ categoryName }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Include some details</Text>
+      <Text style={styles.title}>Add Details</Text>
       <Pressable onPress={pickImageAsync}>
         <Image source={ImagePickerIcon} style={styles.icon} />
       </Pressable>
       <Text style={styles.text}>Upload Image</Text>
-      <SellForm categoryName={categoryName} />
-
+      {includeSellForm && <SellForm />}
     </View>
   );
 };
@@ -39,9 +37,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   icon: {
+    
     width: 100,
     height: 100,
-    marginRight: 8,
+    // marginRight: 8,
     marginBottom: 20,
   },
   text: {
@@ -49,10 +48,11 @@ const styles = StyleSheet.create({
     color: 'grey',
   },
   title: {
+  //  alignSelf:'center',
     fontSize: 23,
     fontWeight: 'bold',
-    alignSelf: 'flex-start',
-    marginLeft: 30,
+    // alignSelf: 'flex-start',
+    // marginLeft: 30,
     marginBottom: 20,
   },
 });
