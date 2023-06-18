@@ -32,6 +32,10 @@ const productSchema = new mongoose.Schema({
       default:"Common Use",
       required:true
     },
+    userId:{
+      type:String,
+      required:true
+    }
   });
 
 productSchema.virtual('id').get(function (){

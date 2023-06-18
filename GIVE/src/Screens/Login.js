@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
 
@@ -9,6 +9,7 @@ import Error from '../../Shared/Error';
 
 import axios from "axios";
 import baseURL from '../../assets/common/baseUrl';
+import { UserContext } from '../../contexts/userContexts';
 
 const Login = () => {
     const navigation = useNavigation();
@@ -17,6 +18,8 @@ const Login = () => {
     const [error, setError] = useState("");
 
     const image = require('../../assets/login.png');
+
+    const { updateUserId } = useContext(UserContext);
 
     const handleSubmit = async () => {
         if (email === "" || password === "") {
@@ -27,7 +30,10 @@ const Login = () => {
                 if (response.status === 200) {
                     console.log('Success');
                     setError("");
+                    updateUserId(response.data.user._id);
+
                     navigation.navigate('Home')
+                    
                 }
               } catch (error) {
                 console.error(error);

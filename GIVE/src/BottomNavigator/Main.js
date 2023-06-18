@@ -21,11 +21,9 @@ const Main = () => {
   const VolunImage = require('../../assets/volunteeringIcon.png');
   const OtherImage = require('../../assets/othersIcon.png');
 
-
-  
   const handleCirclePress = (category) => {
     navigation.navigate('CategoriesMain', { category });
-    console.log('Categories pressed:', category);   
+    console.log('Categories pressed:', category);
   };
 
   const renderCircle = (image, label) => {
@@ -54,22 +52,28 @@ const Main = () => {
 
             <HStack space={3} justifyContent="center" style={{ marginTop: 20, marginBottom: 20 }}>
               <Center>
-                {renderCircle(MedicalImage, 'Medical')}
+                {renderCircle(MedicalImage, 'Medical Appliances')}
+                
               </Center>
               <Center>
-                {renderCircle(ClothImage, 'Cloth')}
+                {renderCircle(ClothImage, 'Cloths')}
+                
               </Center>
               <Center>
                 {renderCircle(BookImage, 'Books')}
+                
               </Center>
               <Center>
                 {renderCircle(VolunImage, 'Volunteer')}
+                
               </Center>
               <Center>
                 {renderCircle(OtherImage, 'Others')}
+                
               </Center>
             </HStack>
-            <ProductContainer />
+            <Text style={styles.circleText}>Suggested Products</Text>
+            <ProductContainer/>
           </View>
         </ScrollView>
       </View>

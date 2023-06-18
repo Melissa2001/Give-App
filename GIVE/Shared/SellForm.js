@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState,useContext} from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet,Dimensions } from 'react-native';
 import CommonButton from './Form/CommonButton';
 import axios from "axios";
 import baseURL from '../assets/common/baseUrl';
 import Error from '../Shared/Error';
+import { UserContext } from '../contexts/userContexts';
 
 const SellForm = ({categoryName}) => {
   const [type, setType] = useState('');
@@ -11,6 +12,7 @@ const SellForm = ({categoryName}) => {
   const [description, setDescription] = useState('');
   const [targetAudience, setTargetAudience] = useState('');
   const [error, setError] = useState("");
+  const { userId } = useContext(UserContext); 
 
   const handleTypeChange = (text) => {
     setType(text);
@@ -46,8 +48,8 @@ const SellForm = ({categoryName}) => {
         return;
       }
 
-      const response = await axios.post(`${baseURL}products/sell`, { categoryId:category._id,type,title,description,targetAudience });
-      if (response.status === 200) {
+      const response = await axios.post(`${baseURL}products/sell`, { categoryId:category._id,type,title,description,targetAudience,userId });
+      if (response.status === 201) {
           console.log('Success');
           setError("Posted Sucessfully");
          

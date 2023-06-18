@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import { View, TextInput, StyleSheet, SafeAreaView, Dimensions, Text, FlatList, TouchableOpacity } from 'react-native';
+import { View, TextInput, StyleSheet, SafeAreaView, Dimensions, Text, FlatList, TouchableOpacity,TouchableWithoutFeedback,Keyboard } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import axios from "axios";
 import baseURL from '../assets/common/baseUrl';
-
+import Details from './Details';
 var { width } = Dimensions.get('window');
 
 const SearchBar = () => {
   const [searchText, setSearchText] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
-
+  const navigation=useNavigation();
   const handleSearch = async (text) => {
     setSearchText(text);
     try {
@@ -23,6 +24,13 @@ const SearchBar = () => {
 
   const handleItemPress = (item) => {
     setSelectedItem(item);
+    navigation.navigate('Details', { product: item });
+  };
+  const handlePressOutside = () => {
+    setSearchText("");
+    setSearchResults([]);
+    setSelectedItem(null);
+    Keyboard.dismiss();
   };
 
   const renderProductItem = ({ item }) => (
@@ -37,38 +45,24 @@ const SearchBar = () => {
     </TouchableOpacity>
   );
 
-  const renderSelectedItem = () => {
-    if (selectedItem) {
-      return (
-        <View style={styles.selectedItemContainer}>
-          <Text style={styles.selectedItemText}>Name: {selectedItem.name}</Text>
-          <Text style={styles.selectedItemText}>Description: {selectedItem.description}</Text>
-          <Text style={styles.selectedItemText}>Brand: {selectedItem.brand}</Text>
-          <Text style={styles.selectedItemText}>Category: {selectedItem.category}</Text>
-          {/* Render other details as needed */}
-        </View>
-      );
-    }
-    return null;
-  };
-
   return (
-    <SafeAreaView style={styles.safeArea}>
-      <View style={styles.container}>
-        <TextInput
-          style={styles.input}
-          placeholder="Search..."
-          onChangeText={handleSearch}
-          value={searchText}
-        />
+    <TouchableWithoutFeedback onPress={handlePressOutside}>
+        <View style={styles.container}>
+        <SafeAreaView style={styles.safeArea}>
+          <TextInput
+            style={styles.input}
+            placeholder="Search..."
+            onChangeText={handleSearch}
+            value={searchText}
+          />
         <FlatList
           data={searchResults}
           renderItem={renderProductItem}
           keyExtractor={(item) => item.id.toString()}
         />
-        {renderSelectedItem()}
-      </View>
     </SafeAreaView>
+      </View>
+    </TouchableWithoutFeedback>
   );
 };
 

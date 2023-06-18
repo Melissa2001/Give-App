@@ -1,15 +1,17 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-
 import ProductsContainer from './ProductContainer';
+import { useRoute } from '@react-navigation/native';
 
-const CategoriesMain = ({ route }) => {
+const CategoriesMain = () => {
+  const route = useRoute();
   const { category } = route.params;
 
   return (
     <View style={styles.container}>
-      <ProductsContainer />
-    </View>
+  
+  <ProductsContainer categoryName={category} />
+</View>
   );
 };
 
