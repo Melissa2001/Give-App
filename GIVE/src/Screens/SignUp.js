@@ -40,13 +40,15 @@ const SignUp = () => {
         });
         if (response.status === 200) {
           console.log('Success');
-          navigation.navigate('OTP');
+          //navigation.navigate('OTP');
+          navigation.navigate('CreateOrg')
         }
       } catch (error) {
         console.error(error);
         setError('Something went wrong. Please try again.');
       }
     }
+    
   };
 
   return (
