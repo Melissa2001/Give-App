@@ -18,7 +18,7 @@ const CommonButton=({onPress,title,bgColor,textColor})=>{
         onPress={()=>{
             onPress();
         }}>
-            <Text style={{color:textColor,fontWeight:'bold',fontSize:21}}>{title}</Text>
+            <Text style={{color:textColor,fontWeight:'bold',fontSize:18}}>{title}</Text>
         </TouchableOpacity>
     )
 }

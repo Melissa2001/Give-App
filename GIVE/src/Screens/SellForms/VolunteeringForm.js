@@ -6,7 +6,7 @@ import UploadImage from '../../../Shared/UploadImage';
 const VolunteeringForm = () => {
   return (
     <View >
-      <UploadImage/>
+       <UploadImage includeSellForm={true} />
     </View>
   );
 };

@@ -1,6 +1,5 @@
-import { View, Text, StyleSheet } from 'react-native';
 import React from 'react';
-
+import { View, StyleSheet } from 'react-native';
 import UploadImage from '../../../Shared/UploadImage';
 
 const BookForm = ({ route }) => {
@@ -8,19 +7,19 @@ const BookForm = ({ route }) => {
 
   return (
     <View>
-      <UploadImage categoryName={categoryName} />
+      <UploadImage includeSellForm={true} />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   text: {
-    marginTop:20,
-    marginLeft:30,
-    color:'grey',
+    marginTop: 20,
+    marginLeft: 30,
+    color: 'grey',
     fontSize: 18,
-    fontStyle:'italic',
-
+    fontStyle: 'italic',
   },
 });
+
 export default BookForm;

@@ -10,7 +10,7 @@ import OTP from "./Screens/OTP";
 import NewPass from "./Screens/NewPass";
 import Success from "./Screens/Success";
 import Home from "./Screens/Home";
-import Sell from '../src/BottomNavigator/Sell'
+import Sell from '../src/BottomNavigator/Sell';
 import MedicalForm from './Screens/SellForms/MedicalForm';
 import ClothForm from './Screens/SellForms/ClothForm';
 import BookForm from './Screens/SellForms/BookForm';
@@ -20,6 +20,7 @@ import Details from "../Shared/Details";
 import CategoriesMain from "../Shared/CategoriesMain";
 import SingleOrg from "../Shared/Organization/SingleOrg";
 import CreateOrg from "./Screens/CreateOrg";
+import EditProfile from "./Screens/EditProfile";
 
 const Stack = createNativeStackNavigator();
 
@@ -134,6 +135,14 @@ const AppNavigator = () => {
           name="CreateOrg"
           component={CreateOrg}
         />
+
+        <Stack.Screen
+          options={{headerShown: false }}
+          name="EditProfile"
+          component={EditProfile}
+        />
+
+      
        
 
       </Stack.Navigator>

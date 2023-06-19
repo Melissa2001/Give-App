@@ -8,7 +8,7 @@ const OthersForm = ({ route }) => {
 
   return (
     <View>
-      <UploadImage categoryName={categoryName} />
+       <UploadImage includeSellForm={true} />
     </View>
   );
 };

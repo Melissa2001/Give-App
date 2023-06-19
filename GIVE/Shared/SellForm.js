@@ -7,7 +7,7 @@ import Error from '../Shared/Error';
 import { UserContext } from '../contexts/userContexts';
 
 const SellForm = ({categoryName}) => {
-  const [type, setType] = useState('');
+  const [type, setType] = useState('');     
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [targetAudience, setTargetAudience] = useState('');

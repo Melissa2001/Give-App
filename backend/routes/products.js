@@ -59,7 +59,7 @@ router.get('/sections', async (req, res) => {
 });
 router.get('/', async (req, res) => {
   try {
-    const products = await Product.find();
+    const products = await Product.aggregate([{ $sample: { size: 6 } }]);
 
     res.status(200).json(products);
   } catch (error) {
