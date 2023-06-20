@@ -21,6 +21,10 @@ const userSchema = mongoose.Schema({
         type:Number,
         default:0
     },
+    phone:{
+        type:Number,
+        default:0
+    },
 })
 
 userSchema.virtual('id').get(function (){

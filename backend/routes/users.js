@@ -57,7 +57,38 @@ router.post('/login', async (req, res) => {
       }
   
       // Return the user's name
-      res.status(200).json({ name: user.name });
+      res.status(200).json({ name: user.name, email: user.email, phone: user.phone});
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Server Error' });
+    }
+  });
+
+  router.put('/update/:id', async (req, res) => {
+    try {
+      const { id } = req.params;
+      const { name, email, phone,newPassword } = req.body;
+  
+      // Find the user by ID
+      const user = await User.findById(id);
+  
+      if (!user) {
+        // User not found
+        return res.status(404).json({ message: 'User not found' });
+      }
+  
+      // Update the user's name, email, and phone
+      user.name = name || user.name;
+      user.email = email || user.email;
+      user.phone = phone || user.phone;
+      if (newPassword) {
+        user.password = newPassword;
+      }
+      // Save the updated user to the database
+      const updatedUser = await user.save();
+  
+      // Return the updated user object
+      res.status(200).json(updatedUser);
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: 'Server Error' });
