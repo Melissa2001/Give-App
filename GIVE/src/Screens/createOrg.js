@@ -16,7 +16,7 @@ import * as ImagePicker from 'expo-image-picker';
       allowsEditing: true,
       quality: 1,
     });
-
+   
     if (!result.cancelled) {
       console.log(result);
     } else {

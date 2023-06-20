@@ -19,8 +19,10 @@ import OthersForm from './Screens/SellForms/OthersForm';
 import Details from "../Shared/Details";
 import CategoriesMain from "../Shared/CategoriesMain";
 import SingleOrg from "../Shared/Organization/SingleOrg";
-import CreateOrg from "./Screens/CreateOrg";
 import EditProfile from "./Screens/EditProfile";
+import CreateOrg from "./Screens/createOrg";
+import History from "./Screens/History";
+import Contact from "./Screens/Contact";
 
 const Stack = createNativeStackNavigator();
 
@@ -141,6 +143,18 @@ const AppNavigator = () => {
           name="EditProfile"
           component={EditProfile}
         />
+
+        <Stack.Screen
+          options={{headerShown: true }}
+          name="History"
+          component={History}
+        />    
+        <Stack.Screen
+          options={{headerShown: true }}
+          name="Contact"
+          component={Contact}
+        />    
+
 
       
        

@@ -2,12 +2,12 @@ import React from 'react';
 import { View, TextInput, Dimensions, Image } from 'react-native';
 import UploadImage from '../../Shared/UploadImage';
 import CommonButton from '../../Shared/Form/CommonButton';
-
+    
 const EditProfile = () => {
   return (
     <View style={{ alignItems: 'center', justifyContent: 'center' }}>
       <UploadImage includeSellForm={false} />
-      <View>
+      <View>   
         <View style={styles.inputContainer}>
           <TextInput style={styles.input} placeholder="Melissa Manoj" />
           <Image source={require('../../assets/edit.png')} style={styles.editIcon} />
@@ -33,6 +33,7 @@ const EditProfile = () => {
           }}
         />
       </View>
+      
     </View>
   );
 };
