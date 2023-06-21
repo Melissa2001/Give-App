@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
 import { View, Image, StyleSheet, Text } from 'react-native';
 import FormContainer from '../../Shared/Form/FormContainer';
 import Input from '../../Shared/Form/Input';
@@ -8,7 +8,7 @@ import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
 import baseURL from '../../assets/common/baseUrl';
 import { Ionicons } from '@expo/vector-icons';
-
+import { UserContext } from '../../contexts/userContexts';
 const SignUp = () => {
   const navigation = useNavigation();
   const [email, setEmail] = useState('');
@@ -18,39 +18,66 @@ const SignUp = () => {
   const [error, setError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const image = require('../../assets/give2.png');
-
+  const { updateUserId } = useContext(UserContext);
   const isEmailValid = (email) => {
     // Regular expression pattern to validate email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = () => {
     if (email === '' || password === '' || name === '') {
       setError('Please fill in your credentials');
     } else if (!isEmailValid(email)) {
       setError('Please enter a valid email address');
     } else {
-      try {
-        const response = await axios.post(`${baseURL}users/reg`, {
-          email,
-          password,
-          name,
-          regno,
-        });
-        if (response.status === 200) {
-          console.log('Success');
-          //navigation.navigate('OTP');
-          navigation.navigate('CreateOrg')
-        }
-      } catch (error) {
-        console.error(error);
-        setError('Something went wrong. Please try again.');
+      if (regno) {
+        // Registration number is filled, save details in the "organizations" table
+        createOrganization();
+      } else {
+        // Registration number is not filled, save details in the "users" table
+        createUser();
       }
     }
-    
   };
-
+  
+  const createOrganization = async () => {
+    try {
+      const response = await axios.post(`${baseURL}organizations/reg`, {
+        email,
+        password,
+        name,
+        regno,
+      });
+      if (response.status === 200) {
+        console.log('Success');
+        // navigation.navigate('OTP');
+        updateUserId(response.data._id);
+        navigation.navigate('CreateOrg');
+      }
+    } catch (error) {
+      console.error(error);
+      setError('Something went wrong. Please try again.');
+    }
+  };
+  
+  const createUser = async () => {
+    try {
+      const response = await axios.post(`${baseURL}users/reg`, {
+        email,
+        password,
+        name,
+      });
+      if (response.status === 200) {
+        console.log('Success');
+        // navigation.navigate('OTP');
+        navigation.navigate('Home');
+      }
+    } catch (error) {
+      console.error(error);
+      setError('Something went wrong. Please try again.');
+    }
+  };
   return (
     <View style={{ backgroundColor: '#ffffff', flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Image source={image} style={{ alignSelf: 'center', resizeMode: 'contain', margin: 40 }} />
