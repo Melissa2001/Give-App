@@ -71,6 +71,7 @@ const SignUp = () => {
       if (response.status === 200) {
         console.log('Success');
         // navigation.navigate('OTP');
+        updateUserId(response.data._id);
         navigation.navigate('Home');
       }
     } catch (error) {
