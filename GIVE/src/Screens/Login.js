@@ -22,29 +22,50 @@ const Login = () => {
     const { updateUserId } = useContext(UserContext);
 
     const handleSubmit = async () => {
-        if (email === "" || password === "") {
-            setError("Please fill in your credentials");
+        if (email === '' || password === '') {
+          setError('Please fill in your credentials');
         } else {
-            try {  
-                const response = await axios.post(`${baseURL}users/login`, { email, password });
-                if (response.status === 200) {
-                    console.log('Success');
-                    setError("");
-                    updateUserId(response.data.user._id);
-
-                    navigation.navigate('Home')
-                    
-                }
-              } catch (error) {
-                console.error(error);
-                if (error.response && error.response.data && error.response.data.message) {
-                    setError(error.response.data.message);
-                } else {
-                    setError("Something went wrong. Please try again.");
-                }
+          try {
+            let user = null;
+            let org = null;
+      
+            // Check if the email belongs to a user
+            const userResponse = await axios.post(`${baseURL}users/login`,{email,password});
+            if (userResponse.data.length > 0) {
+              user = userResponse.data[0];
+              if (user.password !== password) {
+                setError('Incorrect password');
+                return;
+              }
             }
+      
+            // Check if the email belongs to an organization
+            const orgResponse = await axios.post(`${baseURL}organizations/login`,{email,password});
+            if (orgResponse.data.length > 0) {
+              org = orgResponse.data[0];
+              if (org.password !== password) {
+                setError('Incorrect password');
+                return;
+              }
+            }
+      
+            if (user) {
+              updateUserId(user._id);
+              navigation.navigate('Home');
+            } else if (org) {
+              updateUserId(org._id);
+              navigation.navigate('Home');
+            } else {
+              setError('User not found');
+            }
+          } 
+          catch (error) {
+            console.error(error);
+            setError(error);
+          }
         }
-    }
+      };
+      
 
     return (
         <View style={{ backgroundColor: '#ffffff', flex: 1, alignItems: 'center', justifyContent: 'center' }}>

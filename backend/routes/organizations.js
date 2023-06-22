@@ -54,5 +54,31 @@ router.post('/reg', async (req, res) => {
       res.status(500).json({ message: 'Internal server error' });
     }
   });
+  router.post('/login', async (req, res) => {
+    const { email, password } = req.body;
+  
+    try {
+      // Find the organization by email
+      const organization = await Organization.findOne({ email });
+  
+      if (!organization) {
+        // Organization not found
+        return res.status(400).json({ success: false, message: 'Organization not found' });
+      }
+  
+      // Check if the password matches
+      if (organization.password !== password) {
+        // Invalid password
+        return res.status(400).json({ success: false, message: 'Invalid password' });
+      }
+  
+      // Organization found and password is correct
+      res.status(200).json({ success: true, message: 'Organization login successful', organization });
+    } catch (error) {
+      // Error occurred during login
+      console.error(error);
+      res.status(500).json({ success: false, message: 'An error occurred during login' });
+    }
+  });
   
 module.exports = router;
