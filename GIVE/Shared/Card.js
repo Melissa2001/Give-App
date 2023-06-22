@@ -1,22 +1,30 @@
 import React from "react";
-import { View, Text, StyleSheet, Dimensions, Image } from "react-native"
-
-const Card = () => {
+import { View, Text, StyleSheet, Dimensions, Image, TouchableOpacity } from "react-native"
+import { useNavigation } from "@react-navigation/native";
+const Card = (props) => {
     const image = require('../assets/organization.png')
     const image2 = require('../assets/Map_Pin.png')
     const image3 = require('../assets/Paper_Plane.png')
+    const navigation = useNavigation();
     return (
-        <View style={styles
-            .cardContainer}>
-            <Image style={styles.imageStyle} source={image}></Image>
-            <View>
-                <Text style={styles.name}>Maryasadhanam</Text>
-                <Text style={styles.requirement}>1 requirement</Text>
-                <Image source={image3} style={styles.button}></Image>
-                <Text style={styles.location}><Image source={image2} ></Image>Kizhathadiyoor,Palai</Text>
-            </View>
+        <TouchableOpacity
+            onPress={() =>
+                navigation.navigate('OrgSingleHome')}>
 
-        </View>
+            <View style={styles
+                .cardContainer}>
+                <Image style={styles.imageStyle} source={image}></Image>
+                <View>
+                    <Text style={styles.name}>Maryasadhanam</Text>
+                    <Text style={styles.requirement}>1 requirement</Text>
+                    <Image source={image3} style={styles.button}></Image>
+                    <Text style={styles.location}><Image source={image2} ></Image>Kizhathadiyoor,Palai</Text>
+                </View>
+
+            </View>
+        </TouchableOpacity>
+
+
     )
 }
 const deviceWidth = Math.round(Dimensions.get('window').width)

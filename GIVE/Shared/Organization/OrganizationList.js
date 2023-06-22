@@ -1,4 +1,4 @@
-import React from "react";
+import React, {memo} from "react";
 import { TouchableOpacity, View, Dimensions } from "react-native";
 import OrganizationCard from "./OrganizationCard";
 import { useNavigation } from "@react-navigation/native";
@@ -9,7 +9,7 @@ const OrganizationList = (props) => {
     const { item } = props
     return (
         <TouchableOpacity
-            style={{ width: '50%' }}
+            style={{ width: '50%',backgroundColor: '#fff' }}
             onPress={()=>
                 navigation.navigate("SingleOrg",{item:item})}
            
@@ -26,4 +26,4 @@ const OrganizationList = (props) => {
 
 }
 
-export default OrganizationList
+export default memo(OrganizationList) 

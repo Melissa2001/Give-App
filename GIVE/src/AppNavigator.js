@@ -23,6 +23,7 @@ import EditProfile from "./Screens/EditProfile";
 import CreateOrg from "./Screens/createOrg";
 import History from "./Screens/History";
 import Contact from "./Screens/Contact";
+import OrgSingleHome from "../Shared/OrgSingleHome";
 
 const Stack = createNativeStackNavigator();
 
@@ -155,7 +156,11 @@ const AppNavigator = () => {
           component={Contact}
         />    
 
-
+<Stack.Screen
+          options={{headerShown: true }}
+          name="OrgSingleHome"
+          component={OrgSingleHome}
+        /> 
       
        
 

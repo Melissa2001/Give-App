@@ -1,24 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Image, View, StyleSheet, Text, ScrollView, TouchableOpacity, Dimensions } from 'react-native';
 var { width } = Dimensions.get("window")
-const SingleOrg = (props) => {
-
-    const [item, setItem] = useState(props.route.params.item);
-    const [availability, setAvailability] = useState('');
-    const image=require('../../assets/qrcode.png')
+const OrgSingleHome = () => {
+    const image=require('../assets/qrcode.png')
+    const image1 = require('../assets/organization.png')
     return (
 
         <ScrollView style={{ padding: 5 ,backgroundColor:'white'}}>
             <Image
-                source={{
-                    uri: item.image ? item.image : 'https://cdn.pixabay.com/photo/2012/04/01/17/29/box-23649_960_720.png'
-                }}
+                source={image1}
                 resizeMode="cover"
                 style={styles.image}
             />
-            <Text style={styles.heading}>{item.name}</Text>
+            <Text style={styles.heading}>Mariyasadhanam</Text>
             <Text style={styles.req}>requirements</Text>
-            <Text style={styles.description}>{item.description}</Text>
+            <Text style={styles.description}>An NGO located at Palai.</Text>
             <View style={{ flexDirection: 'row' }}>
                 <TouchableOpacity
                     style={styles.button1}
@@ -121,4 +117,4 @@ const styles = StyleSheet.create({
     location: { marginLeft: 20, marginTop: 5, color: '#ffffff',fontWeight:'bold' }
 })
 
-export default SingleOrg
+export default OrgSingleHome

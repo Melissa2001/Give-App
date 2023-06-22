@@ -9,6 +9,7 @@ import Search from '../../Shared/Search';
 import ProductContainer from '../../Shared/ProductContainer';
 import CategoriesMain from '../../Shared/CategoriesMain';
 import OrganizationCard from '../../Shared/Organization/OrganizationCard';
+import Banner from '../../Shared/Banner';
 
 const { width } = Dimensions.get('window');
 
@@ -43,11 +44,11 @@ const Main = () => {
     <NativeBaseProvider>
       <View style={styles.container}>
         <View style={styles.topBar} />
-        <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+        <ScrollView contentContainerStyle={{ flexGrow: 1,backgroundColor: '#fff' }}>
           <View style={{ alignItems: 'center', marginTop: 10 }}>
             <Search />
             <View style={{ alignItems: 'center', marginTop: 10 }}>
-              <OrganizationCard></OrganizationCard>
+              <Card></Card>
             </View>
 
             <HStack space={3} justifyContent="center" style={{ marginTop: 20, marginBottom: 20 }}>
@@ -86,7 +87,7 @@ const styles = {
     flex: 1,
   },
   topBar: {
-    height: 100,
+    //height: 100,
     backgroundColor: '#ffffff',
   },
   circleText: {
