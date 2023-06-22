@@ -1,12 +1,13 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
+import TopBar from '../../Shared/Organization/TopBar';
 
-const Main = () => {
+
+const Chat = () => {
     return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <Text>Chat</Text>
-        </View>
+      <TopBar/>
+        
       );
     }
 
-export default Main
+export default Chat
