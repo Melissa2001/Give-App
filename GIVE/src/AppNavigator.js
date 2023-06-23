@@ -23,6 +23,7 @@ import EditProfile from "./Screens/EditProfile";
 import CreateOrg from "./Screens/createOrg";
 import History from "./Screens/History";
 import Contact from "./Screens/Contact";
+import OrgSingleHome from "../Shared/OrgSingleHome";
 
 const Stack = createNativeStackNavigator();
 
@@ -85,31 +86,31 @@ const AppNavigator = () => {
         />
 
         <Stack.Screen
-          options={{ headerShown: false }}
+          options={{ headerShown: true }}
           name="MedicalForm"
           component={MedicalForm}
         />
 
         <Stack.Screen
-          options={{ headerShown: false }}
+          options={{ headerShown: true }}
           name="ClothForm"
           component={ClothForm}
         />
 
         <Stack.Screen
-          options={{ headerShown: false }}
+          options={{ headerShown: true }}
           name="BookForm"
           component={BookForm}
         />
 
         <Stack.Screen
-          options={{ headerShown: false }}
+          options={{ headerShown: true }}
           name="VolunteeringForm"
           component={VolunteeringForm}
         />
 
         <Stack.Screen
-          options={{ headerShown: false }}
+          options={{ headerShown: true }}
           name="OthersForm"
           component={OthersForm}
         />
@@ -128,7 +129,7 @@ const AppNavigator = () => {
         />
 
         <Stack.Screen
-          options={{headerShown: true}}
+          options={{ headerShown: true, title: "Details" }}
           name="SingleOrg"
           component={SingleOrg}
         />
@@ -139,7 +140,7 @@ const AppNavigator = () => {
         />
 
         <Stack.Screen
-          options={{headerShown: false }}
+          options={{headerShown: true }}
           name="EditProfile"
           component={EditProfile}
         />
@@ -150,12 +151,16 @@ const AppNavigator = () => {
           component={History}
         />    
         <Stack.Screen
-          options={{headerShown: true }}
+          options={{headerShown: false }}
           name="Contact"
           component={Contact}
         />    
 
-
+<Stack.Screen
+          options={{headerShown: true }}
+          name="OrgSingleHome"
+          component={OrgSingleHome}
+        /> 
       
        
 

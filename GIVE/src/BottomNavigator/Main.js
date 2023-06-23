@@ -3,12 +3,13 @@ import { View, Dimensions, Image, ScrollView, TouchableOpacity } from 'react-nat
 import { NativeBaseProvider, HStack, Center, Text } from 'native-base';
 import { useNavigation } from "@react-navigation/native";
 
-
 import Card from '../../Shared/Card';
 import Search from '../../Shared/Search';
 import ProductContainer from '../../Shared/ProductContainer';
 import CategoriesMain from '../../Shared/CategoriesMain';
 import OrganizationCard from '../../Shared/Organization/OrganizationCard';
+import TopBar from '../../Shared/Organization/TopBar';
+import Banner from '../../Shared/Banner';
 
 const { width } = Dimensions.get('window');
 
@@ -42,34 +43,29 @@ const Main = () => {
   return (
     <NativeBaseProvider>
       <View style={styles.container}>
-        <View style={styles.topBar} />
-        <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+        <TopBar />
+        <ScrollView contentContainerStyle={{ flexGrow: 1,backgroundColor: '#fff' }}>
           <View style={{ alignItems: 'center', marginTop: 10 }}>
             <Search />
             <View style={{ alignItems: 'center', marginTop: 10 }}>
-              <OrganizationCard></OrganizationCard>
+              <Card></Card>
             </View>
 
             <HStack space={3} justifyContent="center" style={{ marginTop: 20, marginBottom: 20 }}>
               <Center>
                 {renderCircle(MedicalImage, 'Medical Appliances')}
-                
               </Center>
               <Center>
                 {renderCircle(ClothImage, 'Cloths')}
-                
               </Center>
               <Center>
                 {renderCircle(BookImage, 'Books')}
-                
               </Center>
               <Center>
                 {renderCircle(VolunImage, 'Volunteer')}
-                
               </Center>
               <Center>
                 {renderCircle(OtherImage, 'Others')}
-                
               </Center>
             </HStack>
             <Text style={styles.circleText}>Suggested Products</Text>
@@ -84,10 +80,6 @@ const Main = () => {
 const styles = {
   container: {
     flex: 1,
-  },
-  topBar: {
-    height: 100,
-    backgroundColor: '#ffffff',
   },
   circleText: {
     marginTop: 5,

@@ -1,11 +1,10 @@
 import { View, Text } from 'react-native'
 import React from 'react'
+import TopBar from '../../Shared/Organization/TopBar'
 
 const Contact = () => {
   return (
-    <View>
-      <Text>Contact</Text>
-    </View>
+    <TopBar/>
   )
 }
 

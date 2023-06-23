@@ -13,7 +13,7 @@ const Home = () => {
   const navigation = useNavigation();
 
   return (
-    <KeyboardAvoidingView style={{ flex: 1 }}>
+    <KeyboardAvoidingView style={{ flex: 1 ,backgroundColor:'white'}}>
       {selectedTab === 0 ? (
         <Main />
       ) : selectedTab === 1 ? (
