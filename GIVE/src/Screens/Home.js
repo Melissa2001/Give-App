@@ -7,6 +7,7 @@ import OrganizationContainer from '../../Shared/Organization/OrganizationContain
 import Sell from '../BottomNavigator/Sell';
 import Chat from '../BottomNavigator/Chat';
 import Profile from '../BottomNavigator/Profile';
+import ChatGratitude from '../BottomNavigator/ChatGratitude';
 
 const Home = () => {
   const [selectedTab, setSelectedTab] = useState(0);
@@ -21,7 +22,7 @@ const Home = () => {
       ) : selectedTab === 2 ? (
         <Sell />
       ) : selectedTab === 3 ? (
-        <Chat />
+        <ChatGratitude></ChatGratitude>
       ) : selectedTab === 4 ? (
         <Profile />
       ) : null}

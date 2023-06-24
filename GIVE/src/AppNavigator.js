@@ -1,6 +1,7 @@
 import { View, Text } from "react-native";
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { NavigationContainer } from "@react-navigation/native";
 import Splash from "./Screens/Splash";
 import Login from "./Screens/Login";
@@ -25,8 +26,10 @@ import History from "./Screens/History";
 import Contact from "./Screens/Contact";
 import OrgSingleHome from "../Shared/OrgSingleHome";
 import ChatScreen from "./Screens/ChatScreen";
+import Chat from "./BottomNavigator/Chat";
 
 const Stack = createNativeStackNavigator();
+const Tab = createMaterialTopTabNavigator();
 
 const AppNavigator = () => {
   return (
@@ -172,6 +175,7 @@ const AppNavigator = () => {
        
 
       </Stack.Navigator>
+      
     </NavigationContainer>
   );
 };

@@ -15,7 +15,7 @@ import {
 } from '../../assets/data/messageStyles'
 
 
-import TopBar from '../../Shared/Organization/TopBar';
+
 
 const Messages = [{
   id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
@@ -56,7 +56,7 @@ const Chat = () => {
    
   return (
     <View style={styles.container}>
-      <TopBar />
+      
       <Container>
       <FlatList
       data={Messages}
