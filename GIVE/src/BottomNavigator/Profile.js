@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import CommonButton from '../../Shared/Form/CommonButton';
+import Login from '../Screens/Login';
 
 const Profile = () => {
   const navigation = useNavigation();
@@ -21,6 +22,7 @@ const Profile = () => {
 
   const handleLogoutPress = () => {
     console.log('Logout pressed!');
+    navigation.navigate('Login')
   };
 
   const image = require('../../assets/profile.png');
