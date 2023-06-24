@@ -25,8 +25,10 @@ import CreateOrg from "./Screens/createOrg";
 import History from "./Screens/History";
 import Contact from "./Screens/Contact";
 import OrgSingleHome from "../Shared/OrgSingleHome";
-import ChatScreen from "./Screens/ChatScreen";
-import Chat from "./BottomNavigator/Chat";
+import ChatScreen from "./Screens/ChatAndGratitude/ChatScreen"
+import AddPostScreen from "./Screens/ChatAndGratitude/AddPostScreen";
+
+
 
 const Stack = createNativeStackNavigator();
 const Tab = createMaterialTopTabNavigator();
@@ -172,7 +174,11 @@ const AppNavigator = () => {
           component={ChatScreen}
         /> 
       
-       
+      <Stack.Screen
+          options={{headerShown: true }}
+          name="AddPostScreen"
+          component={AddPostScreen}
+        /> 
 
       </Stack.Navigator>
       

@@ -12,7 +12,7 @@ import {
   PostTime,
   MessageText,
   TextSection,
-} from '../../assets/data/messageStyles'
+} from '../../../assets/data/messageStyles'
 
 
 
