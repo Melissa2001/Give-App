@@ -3,10 +3,11 @@ import React from 'react'
 import TopBar from '../../Shared/Organization/TopBar';
 
 
+
 const Chat = () => {
     return (
-      <TopBar/>
-        
+      <TopBar />
+       
       );
     }
 
