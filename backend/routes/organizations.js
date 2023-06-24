@@ -2,17 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Organization = require('../models/organization');
 
-router.get('/', async (req, res) => {
-  try {
-    const organizations = await Organization.find();
-
-    res.status(200).json(organizations);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Server Error' });
-  }
-});
-
 router.post('/reg', async (req, res) => {
     let organization=new Organization({
         name:req.body.name,
@@ -54,31 +43,55 @@ router.post('/reg', async (req, res) => {
       res.status(500).json({ message: 'Internal server error' });
     }
   });
-  router.post('/login', async (req, res) => {
-    const { email, password } = req.body;
   
+  router.get('/fetchOrganization/:id', async (req, res) => {
     try {
-      // Find the organization by email
-      const organization = await Organization.findOne({ email });
+      const { id } = req.params;
   
+      // Find the organization by ID
+      const organization = await Organization.findById(id);
+  
+      // If organization is not found, return an error
       if (!organization) {
-        // Organization not found
-        return res.status(400).json({ success: false, message: 'Organization not found' });
+        return res.status(404).json({ message: 'User not found' });
       }
   
-      // Check if the password matches
-      if (organization.password !== password) {
-        // Invalid password
-        return res.status(400).json({ success: false, message: 'Invalid password' });
-      }
-  
-      // Organization found and password is correct
-      res.status(200).json({ success: true, message: 'Organization login successful', organization });
+      // Return the organization's name
+      res.status(200).json({ name: organization.name, email: organization.email_id, phone: organization.Phone_no});
     } catch (error) {
-      // Error occurred during login
       console.error(error);
-      res.status(500).json({ success: false, message: 'An error occurred during login' });
+      res.status(500).json({ message: 'Server Error' });
     }
   });
+
+  router.put('/update/:id', async (req, res) => {
+    try {
+      const { id } = req.params;
+      const { name, email, phone,newPassword } = req.body;
   
+      // Find the organization by ID
+      const organization = await Organization.findById(id);
+  
+      if (!organization) {
+        // organization not found
+        return res.status(404).json({ message: 'User not found' });
+      }
+  
+      // Update the organization's name, email, and phone
+      organization.name = name || organization.name;
+      organization.email_id = email || organization.email_id;
+      organization.Phone_no = phone || organization.Phone_no;
+      if (newPassword) {
+        organization.password = newPassword;
+      }
+      // Save the updated Organization to the database
+      const updatedOrganization = await organization.save();
+  
+      // Return the updated organization object
+      res.status(200).json(updatedOrganization);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Server Error' });
+    }
+  });
 module.exports = router;

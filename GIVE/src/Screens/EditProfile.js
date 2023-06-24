@@ -5,40 +5,66 @@ import CommonButton from '../../Shared/Form/CommonButton';
 import { UserContext } from '../../contexts/userContexts';
 import baseURL from '../../assets/common/baseUrl';
 import axios from "axios";    
+import Error from '../../Shared/Error';
 const EditProfile = () => {
-  const { userId } = useContext(UserContext);
+  const { userId, tableUsed } = useContext(UserContext);
   const [user, setUser] = useState({ name: '', email: '', phone: '' });
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-
+  const [error, setError] = useState("");
   useEffect(() => {
     fetchUser();
   }, []);
 
   const fetchUser = async () => {
     try {
-      const response = await axios.get(`${baseURL}users/fetchUsername/${userId}`);
+      let endpoint = '';
+      if (tableUsed === 'users') {
+        endpoint = `users/fetchUsername/${userId}`;
+      } else if (tableUsed === 'organizations') {
+        endpoint = `organizations/fetchOrganization/${userId}`;
+      }
+      else{
+        endpoint=tableUsed;
+      }
+      const response = await axios.get(`${baseURL}${endpoint}`);
       const { name, email, phone } = response.data;
       setUser({ name, email, phone });
     } catch (error) {
       console.error(error);
+      setError(error)
     }
   };
+
   const handleSubmit = async () => {
     try {
-      // Make a PUT request to update the user with the new data
-      const response = await axios.put(`${baseURL}users/update/${userId}`, {
+      if (newPassword !== confirmPassword) {
+        setError('Password and Confirm Password do not match');
+        return;
+      }
+  
+      let endpoint = '';
+      if (tableUsed === 'users') {
+        endpoint = `users/update/${userId}`;
+      } else if (tableUsed === 'organizations') {
+        endpoint = `organizations/update/${userId}`;
+      }
+
+      const response = await axios.put(`${baseURL}${endpoint}`, {
         name: user.name,
         email: user.email,
         phone: user.phone,
         newPassword: newPassword, // Use the new password if provided
       });
+
       console.log('User updated:', response.data);
+      setError('Updated succesfully');
       // You can handle any success logic here
     } catch (error) {
       console.error(error);
     }
   };
+
   const handleInputChange = (field, value) => {
     setUser(prevUser => ({ ...prevUser, [field]: value }));
   };
@@ -62,6 +88,8 @@ const EditProfile = () => {
         <TextInput style={styles.input} placeholder="New Password" value={newPassword} onChangeText={value => setNewPassword(value)}/>
         <TextInput style={styles.input} placeholder="Confirm Password"  value={confirmPassword} onChangeText={value => setConfirmPassword(value)} />
       </View>
+      
+      {error ? <Error message={error} /> : null}
       <View>
         <CommonButton
           title={'Submit'}
