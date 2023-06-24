@@ -52,7 +52,7 @@ const SellForm = ({categoryName}) => {
       if (response.status === 201) {
           console.log('Success');
           setError("Posted Sucessfully");
-         
+          
       }
     } catch (error) {
       console.error(error);
