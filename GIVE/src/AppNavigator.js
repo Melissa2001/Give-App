@@ -24,6 +24,7 @@ import CreateOrg from "./Screens/createOrg";
 import History from "./Screens/History";
 import Contact from "./Screens/Contact";
 import OrgSingleHome from "../Shared/OrgSingleHome";
+import ChatScreen from "./Screens/ChatScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -156,10 +157,16 @@ const AppNavigator = () => {
           component={Contact}
         />    
 
-<Stack.Screen
+        <Stack.Screen
           options={{headerShown: true }}
           name="OrgSingleHome"
           component={OrgSingleHome}
+        /> 
+
+        <Stack.Screen
+          options={({ route }) => ({ headerShown: true, title: route.params.fullName })}
+          name="ChatScreen"
+          component={ChatScreen}
         /> 
       
        
