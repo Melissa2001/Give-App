@@ -163,7 +163,7 @@ const AppNavigator = () => {
         />    
 
         <Stack.Screen
-          options={{headerShown: true }}
+          options={{headerShown: true ,title:"Requirments" }}
           name="OrgSingleHome"
           component={OrgSingleHome}
         /> 
