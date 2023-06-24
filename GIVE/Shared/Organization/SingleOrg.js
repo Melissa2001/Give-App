@@ -41,7 +41,7 @@ const SingleOrg = (props) => {
 
 const styles = StyleSheet.create({
     image: {
-        height: width,
+        height:width,
         width: width,
         borderRadius: 20,
         alignSelf: 'center'

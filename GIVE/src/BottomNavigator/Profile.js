@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import CommonButton from '../../Shared/Form/CommonButton';
@@ -6,6 +6,22 @@ import Login from '../Screens/Login';
 
 const Profile = () => {
   const navigation = useNavigation();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  useEffect(() => {
+    const unsubscribe = navigation.addListener('focus', () => {
+      // Clear the Email Id and Password fields when navigating back to the Profile screen
+      clearFields();
+    });
+
+    return unsubscribe;
+  }, [navigation]);
+
+  const clearFields = () => {
+    setEmail('');
+    setPassword('');
+  };
 
   const handlePress = () => {
     navigation.navigate('EditProfile');
@@ -20,9 +36,17 @@ const Profile = () => {
     navigation.navigate('Contact');
   };
 
-  const handleLogoutPress = () => {
+  const handleLogoutPress = async () => {
+    // Clear the Email Id and Password fields
+    clearFields();
+
+    // Clear the stored credentials
+    await SecureStore.deleteItemAsync('email');
+    await SecureStore.deleteItemAsync('password');
+
     console.log('Logout pressed!');
-    navigation.navigate('Login')
+    // Redirect to the login screen
+    navigation.navigate('Login');
   };
 
   const image = require('../../assets/profile.png');
