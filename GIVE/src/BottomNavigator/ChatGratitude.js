@@ -1,7 +1,7 @@
 import React from "react";
 import { View } from "react-native";
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import Chat from "./Chat";
+import Chat from "../Screens/ChatAndGratitude/Chat";
 import Gratitude from "./Gratitude";
 import TopBar from "../../Shared/Organization/TopBar";
 

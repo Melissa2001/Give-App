@@ -7,7 +7,7 @@ const SingleOrg = (props) => {
     const [item, setItem] = useState(props.route.params.item);
     const [availability, setAvailability] = useState('');
     const image = require('../../assets/qrcode.png');
-
+return( 
         <ScrollView style={{ padding: 5 ,backgroundColor:'white'}}>
             <Image
                 source={{
@@ -36,7 +36,7 @@ const SingleOrg = (props) => {
                 <Image style={styles.qr} source={image} />
             </View>
         </ScrollView>
-    
+)
 }
 
 const styles = StyleSheet.create({

@@ -5,7 +5,7 @@ import Main from '../BottomNavigator/Main';
 //import Organization from '../BottomNavigator/Organization';
 import OrganizationContainer from '../../Shared/Organization/OrganizationContainer';
 import Sell from '../BottomNavigator/Sell';
-import Chat from '../BottomNavigator/Chat';
+
 import Profile from '../BottomNavigator/Profile';
 import ChatGratitude from '../BottomNavigator/ChatGratitude';
 
