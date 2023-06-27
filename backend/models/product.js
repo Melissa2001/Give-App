@@ -35,7 +35,11 @@ const productSchema = new mongoose.Schema({
     userId:{
       type:String,
       required:true
-    }
+    },
+    postedDate:{
+      type:Date,
+      default:Date.now,
+    },
   });
 
 productSchema.virtual('id').get(function (){
