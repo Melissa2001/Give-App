@@ -1,6 +1,7 @@
 // History.js
-import React, { useState, useEffect,useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { View, Text, Pressable, HStack, Badge, Spacer, ScrollView } from 'native-base';
+import { Dimensions } from 'react-native';
 import axios from 'axios';
 import baseURL from '../../assets/common/baseUrl';
 import { UserContext } from '../../contexts/userContexts';
@@ -24,18 +25,20 @@ const History = () => {
     fetchProducts();
   }, [userContext.userId]);
 
+  const deviceWidth = Math.round(Dimensions.get('window').width);
+
   return (
     <ScrollView>
-      <View style={{ marginTop: 40 }}>
+      <View style={{ marginTop: 20 }}>
         {products.map((product) => (
-          <HistoryCard key={product.id} product={product} />
+          <HistoryCard key={product.id} product={product} deviceWidth={deviceWidth} />
         ))}
       </View>
     </ScrollView>
   );
 };
 
-function HistoryCard({ product }) {
+function HistoryCard({ product, deviceWidth }) {
   return (
     <View alignItems="center">
       <Pressable maxW={96}>
@@ -48,21 +51,21 @@ function HistoryCard({ product }) {
             shadow={3}
             borderWidth={1}
             borderColor="coolGray.300"
+            marginBottom={5}
+            height={200} 
+            width={deviceWidth - 80}
           >
             <HStack alignItems="center">
               <Badge colorScheme="purple" _text={{ color: 'white' }} variant="solid" rounded={4}>
                 Sell
               </Badge>
               <Spacer />
-              <Text fontSize={10} color="coolGray.800">
-                {product.postedDate}
-              </Text>
             </HStack>
             <Text color="coolGray.800" mt={3} fontWeight="medium" fontSize="xl">
               {product.name}
             </Text>
             <Text mt={2} fontSize="sm" color="coolGray.700">
-              {product.description}
+              {product.name} is bought or sold on {product.postedDate} by you.
             </Text>
           </View>
         )}
