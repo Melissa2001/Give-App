@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
   color_textPrivate: {
     fontSize: 13,
     fontWeight: '400',
-    fontFamily: 'Lato-Regular',
+    // fontFamily: 'Lato-Regular',
     color: 'grey',
   },
 });
