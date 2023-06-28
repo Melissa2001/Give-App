@@ -12,6 +12,10 @@ const requirementSchema = new mongoose.Schema({
   requirement: {
     type: String,
     required: true
+  },
+  Date:{
+    type:Date,
+    default:Date.now
   }
 });
 
