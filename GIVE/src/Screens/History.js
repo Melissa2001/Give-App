@@ -1,23 +1,41 @@
-import React, { useState } from 'react';
+// History.js
+import React, { useState, useEffect,useContext } from 'react';
 import { View, Text, Pressable, HStack, Badge, Spacer, ScrollView } from 'native-base';
+import axios from 'axios';
+import baseURL from '../../assets/common/baseUrl';
+import { UserContext } from '../../contexts/userContexts';
 
 const History = () => {
+  const [products, setProducts] = useState([]);
+  const userContext = useContext(UserContext);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get(`${baseURL}products/date`);
+        const userProducts = response.data.filter((product) => product.userId === userContext.userId);
+        const sortedProducts = userProducts.sort((a, b) => new Date(b.postedDate) - new Date(a.postedDate));
+        setProducts(sortedProducts);
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      }
+    };
+
+    fetchProducts();
+  }, [userContext.userId]);
+
   return (
     <ScrollView>
       <View style={{ marginTop: 40 }}>
-        <HistoryCard />
-      </View>
-      <View style={{ marginTop: 40 }}>
-        <HistoryCard />
-      </View>
-      <View style={{ marginTop: 40, marginBottom: 40 }}>
-        <HistoryCard />
+        {products.map((product) => (
+          <HistoryCard key={product.id} product={product} />
+        ))}
       </View>
     </ScrollView>
   );
 };
 
-function HistoryCard() {
+function HistoryCard({ product }) {
   return (
     <View alignItems="center">
       <Pressable maxW={96}>
@@ -37,14 +55,14 @@ function HistoryCard() {
               </Badge>
               <Spacer />
               <Text fontSize={10} color="coolGray.800">
-                28/06/2023
+                {product.postedDate}
               </Text>
             </HStack>
             <Text color="coolGray.800" mt={3} fontWeight="medium" fontSize="xl">
-              Tshirt
+              {product.name}
             </Text>
             <Text mt={2} fontSize="sm" color="coolGray.700">
-              Unlock powerful time-saving tools for creating email delivery and collecting marketing data
+              {product.description}
             </Text>
           </View>
         )}
