@@ -1,26 +1,16 @@
 import React, { useState } from 'react';
-import { View, Text, Pressable, HStack, Badge, Flex, Spacer, ScrollView } from 'native-base';
-import { Calendar } from 'react-native-calendars';
+import { View, Text, Pressable, HStack, Badge, Spacer, ScrollView } from 'native-base';
 
 const History = () => {
-  const [selectedDate, setSelectedDate] = useState(null);
-
-  const handleDateSelect = (date) => {
-    setSelectedDate(date.dateString);
-  };
-
   return (
     <ScrollView>
-      <View style={{ marginTop: 10 }}>
-        <Calendar onDayPress={handleDateSelect} />
-      </View>
       <View style={{ marginTop: 40 }}>
         <HistoryCard />
       </View>
       <View style={{ marginTop: 40 }}>
         <HistoryCard />
       </View>
-      <View style={{ marginTop: 40,marginBottom:40 }}>
+      <View style={{ marginTop: 40, marginBottom: 40 }}>
         <HistoryCard />
       </View>
     </ScrollView>
@@ -47,7 +37,7 @@ function HistoryCard() {
               </Badge>
               <Spacer />
               <Text fontSize={10} color="coolGray.800">
-                1 month ago
+                28/06/2023
               </Text>
             </HStack>
             <Text color="coolGray.800" mt={3} fontWeight="medium" fontSize="xl">
