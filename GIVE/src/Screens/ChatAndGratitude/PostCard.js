@@ -20,7 +20,7 @@ const PostCard = ({item}) => {
 
 
   likeIcon = item.liked ? 'heart' : 'heart-outline';
-  likeIconColor = item.liked ? '#2e64e5' : '#333';
+  likeIconColor = item.liked ? 'red' : '#333';
 
   if (item.likes == 1) {
     likeText = '1 Like';

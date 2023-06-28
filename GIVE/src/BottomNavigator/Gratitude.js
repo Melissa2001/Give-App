@@ -86,7 +86,7 @@ return(
               name="plus"
               size={22}
               backgroundColor="#fff"
-              color="#2e64e5"
+              color="#9683dd"
               onPress={() => navigation.navigate('AddPostScreen')}
             />
           </View>
