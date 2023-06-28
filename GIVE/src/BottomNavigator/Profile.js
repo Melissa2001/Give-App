@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import CommonButton from '../../Shared/Form/CommonButton';
-import * as SecureStore from 'expo-secure-store';
+import Login from '../Screens/Login';
 
 const Profile = () => {
   const navigation = useNavigation();

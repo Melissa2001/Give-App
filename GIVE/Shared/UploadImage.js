@@ -3,14 +3,14 @@ import { View, Text, Image, StyleSheet, Pressable, ScrollView } from 'react-nati
 import * as ImagePicker from 'expo-image-picker';
 import SellForm from '../Shared/SellForm';
 
-const UploadImage = ({ includeSellForm }) => {
+const UploadImage = ({ categoryName }) => {
   const pickImageAsync = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       allowsEditing: true,
       quality: 1,
     });
 
-    if (!result.cancelled) {
+    if (!result.canceled) {
       console.log(result);
     } else {
       alert('You did not select any image.');
@@ -26,7 +26,7 @@ const UploadImage = ({ includeSellForm }) => {
         <Image source={ImagePickerIcon} style={styles.icon} />
       </Pressable>
       <Text style={styles.text}>Upload Image</Text>
-      {includeSellForm && <SellForm />}
+      <SellForm categoryName={categoryName}/>
     </ScrollView>
   );
 };
