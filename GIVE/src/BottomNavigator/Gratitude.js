@@ -78,32 +78,33 @@ const Posts = [
 ];
 
 const Gratitude = () => {
-    const navigation = useNavigation();
-return( 
-     <ScrollView style={{backgroundColor:"#fff"}}>
-         <View style={{marginRight: 10,alignSelf:'flex-end'}}>
-            <FontAwesome5.Button
-              name="plus"
-              size={22}
-              backgroundColor="#fff"
-              color="#9683dd"
-              onPress={() => navigation.navigate('AddPostScreen')}
+  const navigation = useNavigation();
+
+  return (
+    <ScrollView style={{ backgroundColor: "#fff" }}>
+      <View style={{ marginRight: 10, alignSelf: 'flex-end' }}>
+        <FontAwesome5.Button
+          name="plus"
+          size={22}
+          backgroundColor="#fff"
+          color="#9683dd"
+          onPress={() => navigation.navigate('AddPostScreen', { screenType: 'gratitude' })}
+        />
+      </View>
+
+      <Container>
+        <FlatList
+          data={Posts}
+          renderItem={({ item }) => (
+            <PostCard
+              item={item}
             />
-          </View>
-        <Container>
-          <FlatList
-            data={Posts}
-            renderItem={({item}) => (
-              <PostCard
-                item={item}
-                
-              />
-            )}
-            keyExtractor={(item) => item.id}
-          />
-        </Container>
-        </ScrollView>
-)
+          )}
+          keyExtractor={(item) => item.id}
+        />
+      </Container>
+    </ScrollView>
+  )
 };
 
 export default Gratitude;
