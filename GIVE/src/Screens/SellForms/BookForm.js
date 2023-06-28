@@ -1,13 +1,14 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import UploadImage from '../../../Shared/UploadImage';
-
 const BookForm = ({ route }) => {
   const { categoryName } = route.params;
 
   return (
     <View>
-      <UploadImage includeSellForm={true} />
+      
+      <UploadImage categoryName={categoryName} />
+     
     </View>
   );
 };

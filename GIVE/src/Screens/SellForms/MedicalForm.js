@@ -4,10 +4,10 @@ import UploadImage from '../../../Shared/UploadImage';
 
 const MedicalForm = ({ route }) => {
   const { categoryName } = route.params;
-
+ 
   return (
     <View>
-       <UploadImage includeSellForm={true} />
+       <UploadImage categoryName={categoryName} />
     </View>
   );
 };
