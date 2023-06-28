@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
 import { View, Text, Pressable, HStack, Badge, Spacer, ScrollView } from 'native-base';
 import CommonButton from '../../../Shared/Form/CommonButton';
-import AddPostScreen from '../ChatAndGratitude/AddPostScreen';
 import { useNavigation } from '@react-navigation/native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-
+import AddPostScreen from '../ChatAndGratitude/AddPostScreen';
 const handlePress = () => {
   console.log('Button pressed!');
 };
 
-const History = () => {
+const Requirement = () => {
   const navigation = useNavigation();
 
   return (
@@ -25,22 +24,22 @@ const History = () => {
       </View>
 
       <View style={{ marginTop: 40 }}>
-        <HistoryCard />
+        <RequirementCard />
       </View>
       <View style={{ marginTop: 40 }}>
-        <HistoryCard />
+        <RequirementCard />
       </View>
       <View style={{ marginTop: 40 }}>
-        <HistoryCard />
+        <RequirementCard />
       </View>
       <View style={{ marginTop: 40, marginBottom: 40 }}>
-        <HistoryCard />
+        <RequirementCard />
       </View>
     </ScrollView>
   );
 };
 
-function HistoryCard() {
+function RequirementCard() {
   return (
     <View alignItems="center">
       <Pressable maxW={96}>
@@ -77,4 +76,4 @@ function HistoryCard() {
   );
 }
 
-export default History;
+export default Requirement;
