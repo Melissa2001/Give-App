@@ -79,4 +79,18 @@ router.get('/date', async (req, res) => {
   }
 });
 
+router.delete('/:productId', async (req, res) => {
+  try {
+    const productId = req.params.productId;
+
+    // Delete the product from the database
+    await Product.findByIdAndDelete(productId);
+
+    res.status(200).json({ message: 'Product deleted successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server Error' });
+  }
+});
+
 module.exports = router;

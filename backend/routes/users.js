@@ -44,20 +44,35 @@ router.post('/login', async (req, res) => {
   }
 });
 
-  router.post('/reg', async (req, res) => {
-    let user=new User({
-        name:req.body.name,
-        email:req.body.email,
-        password:req.body.password,
-        regNo:req.body.regno,
-        })
-    
-        user=await user.save();
-        if(!user)
-        return res.status(400).send('User Cannot be created');
-    
-        res.send(user);
-  });
+router.post('/reg', async (req, res) => {
+  try {
+    const { name, email, password, regno } = req.body;
+
+    // Check if the email already exists in the database
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ message: 'Email already exists' });
+    }
+
+    // Create a new user
+    const user = new User({
+      name,
+      email,
+      password,
+      regNo: regno,
+    });
+
+    const savedUser = await user.save();
+    if (!savedUser) {
+      return res.status(400).json({ message: 'User cannot be created' });
+    }
+
+    res.status(200).json(savedUser);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server Error' });
+  }
+});
 
   router.get('/fetchUsername/:id', async (req, res) => {
     try {

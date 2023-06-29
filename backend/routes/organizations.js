@@ -3,19 +3,30 @@ const router = express.Router();
 const Organization = require('../models/organization');
 
 router.post('/reg', async (req, res) => {
-    let organization=new Organization({
-        name:req.body.name,
-        email_id:req.body.email,
-        password:req.body.password,
-        reg_no:req.body.regno,
-        })
-    
-        organization=await organization.save();
-        if(!organization)
-        return res.status(400).send('Organization Cannot be created');
-    
-        res.send(organization);
+  const { name, email, password, regno } = req.body;
+
+  // Check if an organization with the same email already exists
+  const existingOrganization = await Organization.findOne({ email_id: email });
+  if (existingOrganization) {
+    return res.status(400).json({message:'An organization with the same email already exists'});
+  }
+
+  // Create a new organization
+  const organization = new Organization({
+    name,
+    email_id: email,
+    password,
+    reg_no: regno,
   });
+
+  try {
+    const savedOrganization = await organization.save();
+    res.send(savedOrganization);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Organization cannot be created');
+  }
+});
 
   router.put('/:id', async (req, res) => {
     try {

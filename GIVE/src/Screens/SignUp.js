@@ -57,7 +57,7 @@ const SignUp = () => {
       }
     } catch (error) {
       console.error(error);
-      setError('Something went wrong. Please try again.');
+      setError(error.response.data.message);
     }
   };
   
@@ -76,7 +76,7 @@ const SignUp = () => {
       }
     } catch (error) {
       console.error(error);
-      setError('Something went wrong. Please try again.');
+      setError(error.response.data.message);
     }
   };
   return (
