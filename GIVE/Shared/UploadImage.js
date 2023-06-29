@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, Image, StyleSheet, Pressable, ScrollView } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import SellForm from '../Shared/SellForm';
 
-const UploadImage = ({ includeSellForm }) => {
+const UploadImage = ({ categoryName }) => {
+  const [selectedImage, setSelectedImage] = useState(null);
+
   const pickImageAsync = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       allowsEditing: true,
@@ -11,9 +13,20 @@ const UploadImage = ({ includeSellForm }) => {
     });
 
     if (!result.cancelled) {
-      console.log(result);
+      setSelectedImage(result.uri);
     } else {
       alert('You did not select any image.');
+    }
+  };
+
+  const handleFormSubmit = () => {
+    if (selectedImage) {
+      // Here you can implement the logic to store the selectedImage in the database
+      console.log('Selected image:', selectedImage);
+      // Reset the selectedImage state after storing it in the database
+      setSelectedImage(null);
+    } else {
+      alert('Please select an image before submitting.');
     }
   };
 
@@ -26,7 +39,10 @@ const UploadImage = ({ includeSellForm }) => {
         <Image source={ImagePickerIcon} style={styles.icon} />
       </Pressable>
       <Text style={styles.text}>Upload Image</Text>
-      {includeSellForm && <SellForm />}
+      {selectedImage && (
+        <Image source={{ uri: selectedImage }} style={styles.selectedImage} />
+      )}
+      <SellForm categoryName={categoryName} onSubmit={handleFormSubmit} />
     </ScrollView>
   );
 };
@@ -49,6 +65,11 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 23,
     fontWeight: 'bold',
+    marginBottom: 20,
+  },
+  selectedImage: {
+    width: 200,
+    height: 200,
     marginBottom: 20,
   },
 });

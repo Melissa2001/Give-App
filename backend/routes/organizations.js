@@ -43,6 +43,18 @@ router.post('/reg', async (req, res) => {
       res.status(500).json({ message: 'Internal server error' });
     }
   });
+
+  
+  router.get('/', async (req, res) => {
+    try {
+      const organizations = await Organization.find();
+      res.status(200).json(organizations);
+    } catch (error) {
+      console.error('Error fetching organizations:', error);
+      res.status(500).json({ error: 'An error occurred while fetching organizations' });
+    }
+  });
+  
   
   router.get('/fetchOrganization/:id', async (req, res) => {
     try {

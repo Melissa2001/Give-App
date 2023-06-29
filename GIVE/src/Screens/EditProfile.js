@@ -69,20 +69,19 @@ const EditProfile = () => {
     setUser(prevUser => ({ ...prevUser, [field]: value }));
   };
   return (
-    <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-      <UploadImage includeSellForm={false} />
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <View>   
         <View style={styles.inputContainer}>
-        <TextInput style={styles.input} placeholder={user?.name || ''} value={user?.name || ''} onChangeText={value => handleInputChange('name', value)}/>
+        <TextInput style={styles.input} placeholder={user?.name ? user.name.toString() : ''} value={user?.name ? user.name.toString() : ''} onChangeText={value => handleInputChange('name', value)}/>
           <Image source={require('../../assets/edit.png')} style={styles.editIcon} />
         </View>
         <View style={styles.inputContainer}>
-          <TextInput style={styles.input} placeholder={user?.email || ''} value={user?.email || ''} onChangeText={value => handleInputChange('email', value)}/>
+          <TextInput style={styles.input}   placeholder={user?.email ? user.email.toString() : ''} value={user?.email ? user.email.toString() : ''} onChangeText={value => handleInputChange('email', value)}/>
           
           <Image source={require('../../assets/edit.png')} style={styles.editIcon} />
         </View>
         <View style={styles.inputContainer}>
-          <TextInput style={styles.input} placeholder={user?.phone || '8745669854'} value={user?.phone || '8745669854'} onChangeText={value => handleInputChange('phone', value)}/>
+          <TextInput style={styles.input}  placeholder={user?.phone ? user.phone.toString() : '8745669854'} value={user?.phone ? user.phone.toString() : '8745669854'} onChangeText={value => handleInputChange('phone', value)}/>
           <Image source={require('../../assets/edit.png')} style={styles.editIcon} />
         </View>
         <TextInput style={styles.input} placeholder="New Password" value={newPassword} onChangeText={value => setNewPassword(value)}/>

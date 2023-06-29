@@ -68,4 +68,15 @@ router.get('/', async (req, res) => {
   }
 });
 
+
+router.get('/date', async (req, res) => {
+  try {
+    const products = await Product.find();
+    res.status(200).json(products);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server Error' });
+  }
+});
+
 module.exports = router;

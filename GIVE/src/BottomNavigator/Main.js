@@ -6,10 +6,7 @@ import { useNavigation } from "@react-navigation/native";
 import Card from '../../Shared/Card';
 import Search from '../../Shared/Search';
 import ProductContainer from '../../Shared/ProductContainer';
-import CategoriesMain from '../../Shared/CategoriesMain';
-import OrganizationCard from '../../Shared/Organization/OrganizationCard';
 import TopBar from '../../Shared/Organization/TopBar';
-import Banner from '../../Shared/Banner';
 
 const { width } = Dimensions.get('window');
 
@@ -19,7 +16,6 @@ const Main = () => {
   const MedicalImage = require('../../assets/medicalIcon.png');
   const ClothImage = require('../../assets/clothIcon.png');
   const BookImage = require('../../assets/booksIcon.png');
-  const VolunImage = require('../../assets/volunteeringIcon.png');
   const OtherImage = require('../../assets/othersIcon.png');
 
   const handleCirclePress = (category) => {
@@ -51,7 +47,7 @@ const Main = () => {
               <Card></Card>
             </View>
 
-            <HStack space={3} justifyContent="center" style={{ marginTop: 20, marginBottom: 20 }}>
+            <HStack space={5} justifyContent="center" style={{ marginTop: 20, marginBottom: 20 }}>
               <Center>
                 {renderCircle(MedicalImage, 'Medical Appliances')}
               </Center>
@@ -60,9 +56,6 @@ const Main = () => {
               </Center>
               <Center>
                 {renderCircle(BookImage, 'Books')}
-              </Center>
-              <Center>
-                {renderCircle(VolunImage, 'Furniture')}
               </Center>
               <Center>
                 {renderCircle(OtherImage, 'Others')}

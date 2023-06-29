@@ -1,32 +1,64 @@
-import React from 'react';
-import { View, Text, FlatList, TouchableOpacity, Dimensions, StyleSheet, Image } from 'react-native';
+import React from "react";
+import {
+  View,
+  Text,
+  FlatList,
+  TouchableOpacity,
+  Dimensions,
+  StyleSheet,
+  Image,
+} from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-const { width } = Dimensions.get('window');
+const { width } = Dimensions.get("window");
 const cardWidth = (width - 20) / 2 - 40;
 const data = [
-  { id: '1', title: 'Medical Appliances', color: '#FBDBD4', image: require('../assets/medicalIcon.png') },
-  { id: '2', title: 'Cloths', color: '#FAECD3', image: require('../assets/clothIcon.png') },
-  { id: '3', title: 'Books', color: '#E7D4C1', image: require('../assets/booksIcon.png') },
-  { id: '4', title: 'Furniture', color: '#C4ECE0', image: require('../assets/volunteeringIcon.png') },
-  { id: '5', title: 'Others', color: '#CADCE6', image: require('../assets/othersIcon.png') },
-  { id: '6', title: 'Requirements', color: '#CADCE6', image: require('../assets/othersIcon.png')},
+  {
+    id: "1",
+    title: "Medical Appliances",
+    color: "#FBDBD4",
+    image: require("../assets/medicalIcon.png"),
+  },
+  {
+    id: "2",
+    title: "Cloths",
+    color: "#FAECD3",
+    image: require("../assets/clothIcon.png"),
+  },
+  {
+    id: "3",
+    title: "Books",
+    color: "#E7D4C1",
+    image: require("../assets/booksIcon.png"),
+  },
+  {
+    id: "4",
+    title: "Requirments",
+    color: "#C4ECE0",
+    image: require("../assets/requirments.png"),
+  },
+  {
+    id: "5",
+    title: "Others",
+    color: "#CADCE6",
+    image: require("../assets/othersIcon.png"),
+  },
 ];
 
 const CategoriesCard = () => {
   const navigation = useNavigation();
 
   const handleCardPress = (item) => {
-    if (item.id === '1') {
-      navigation.navigate('MedicalForm', { categoryName: item.title });
-    } else if (item.id === '2') {
-      navigation.navigate('ClothForm', { categoryName: item.title });
-    } else if (item.id === '3') {
-      navigation.navigate('BookForm', { categoryName: item.title });
-    } else if (item.id === '4') {
-      navigation.navigate('VolunteeringForm', { categoryName: item.title });
-    }else {
-      navigation.navigate('OthersForm', { categoryName: item.title });
+    if (item.id === "1") {
+      navigation.navigate("MedicalForm", { categoryName: item.title });
+    } else if (item.id === "2") {
+      navigation.navigate("ClothForm", { categoryName: item.title });
+    } else if (item.id === "3") {
+      navigation.navigate("BookForm", { categoryName: item.title });
+    } else if (item.id === "4") {
+      navigation.navigate("RequirementsForm", { categoryName: item.title });
+    } else {
+      navigation.navigate("OthersForm", { categoryName: item.title });
     }
   };
 
@@ -59,29 +91,29 @@ const styles = StyleSheet.create({
     padding: 15,
   },
   flatListContent: {
-    justifyContent: 'space-between',
+    justifyContent: "space-between",
   },
   card: {
     width: cardWidth,
     height: cardWidth,
-    backgroundColor: 'lightgray',
+    backgroundColor: "lightgray",
     borderRadius: 8,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     marginVertical: 15,
     marginHorizontal: 15,
   },
   cardTitle: {
-    color: 'grey',
+    color: "grey",
     fontSize: 14,
-    textAlign: 'center',
+    textAlign: "center",
     marginBottom: -5,
   },
   cardImage: {
     width: 50,
     height: 50,
     marginBottom: 10,
-    alignSelf: 'center',
+    alignSelf: "center",
   },
 });
 

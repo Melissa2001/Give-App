@@ -52,7 +52,7 @@ const SignUp = () => {
       if (response.status === 200) {
         console.log('Success');
         // navigation.navigate('OTP');
-        updateUserId(response.data._id);
+        updateUserId(response.data._id,'organizations',false);
         navigation.navigate('CreateOrg');
       }
     } catch (error) {
@@ -71,7 +71,7 @@ const SignUp = () => {
       if (response.status === 200) {
         console.log('Success');
         // navigation.navigate('OTP');
-        updateUserId(response.data._id);
+        updateUserId(response.data._id, 'users', false);
         navigation.navigate('Home');
       }
     } catch (error) {

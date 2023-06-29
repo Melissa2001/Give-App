@@ -35,11 +35,11 @@ const Login = () => {
         const { table, user: userData, organization: orgData } = response.data;
 
         if (table === 'users') {
-          user = userData;
-          updateUserId(user._id, 'users');
+          const { _id, isAdmin } = userData;
+          updateUserId(_id, 'users', isAdmin);
         } else if (table === 'organizations') {
           org = orgData;
-          updateUserId(org._id, 'organizations');
+          updateUserId(org._id, 'organizations',false);
         }
 
         navigation.navigate('Home');

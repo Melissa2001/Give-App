@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image, StyleSheet, ScrollView, Dimensions } from 'react-native';
+import { View, Text, Image, StyleSheet, ScrollView, Dimensions ,TouchableOpacity} from 'react-native';
 import CommonButton from './Form/CommonButton';
 import baseURL from '../assets/common/baseUrl';
 import axios from 'axios';
-
+import { useNavigation } from '@react-navigation/native';
+import Chat from '../src/Screens/ChatAndGratitude/Chat';
 const { width } = Dimensions.get('window');
 
 const Details = ({ route }) => {
+  const report = require('../assets/report.png')
   const { product } = route.params;
   const [userName, setUserName] = useState('');
-
+  const navigation = useNavigation();
   useEffect(() => {
     fetchUserName();
   }, []);
@@ -26,6 +28,13 @@ const Details = ({ route }) => {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
+      <TouchableOpacity
+        style={styles.reportIconContainer}
+        onPress={() => {
+          // Handle report icon press
+        }}
+      >
+      </TouchableOpacity>
       <Image source={{ uri: product.image }} style={styles.image} />
       <Text style={styles.heading}>{product.name}</Text>
       <Text style={styles.description}>{product.description}</Text>
@@ -33,9 +42,9 @@ const Details = ({ route }) => {
       <Text style={styles.heading}>Contact</Text>
       <Text style={styles.contactname}>{userName}</Text>
       <View style={styles.buttonContainer}>
-        <CommonButton
+      <CommonButton
           onPress={() => {
-            // Handle button press
+            navigation.navigate('Chat');
           }}
           title="Message"
           bgColor="#4CAF50"
@@ -51,6 +60,13 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     paddingBottom: 20,
     paddingHorizontal: 20,
+    
+  },
+  reportIconContainer: {
+    position: 'absolute',
+    top: 10,
+    right: 10,
+    zIndex: 1,
   },
   image: {
     marginTop: 40,
@@ -85,6 +101,9 @@ const styles = StyleSheet.create({
     marginTop: -50,
     left:130
   },
+  reportIconContainer:{
+
+  }
 });
 
 export default Details;
