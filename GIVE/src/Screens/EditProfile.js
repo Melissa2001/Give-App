@@ -69,8 +69,7 @@ const EditProfile = () => {
     setUser(prevUser => ({ ...prevUser, [field]: value }));
   };
   return (
-    <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-      <UploadImage includeSellForm={false} />
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <View>   
         <View style={styles.inputContainer}>
         <TextInput style={styles.input} placeholder={user?.name ? user.name.toString() : ''} value={user?.name ? user.name.toString() : ''} onChangeText={value => handleInputChange('name', value)}/>

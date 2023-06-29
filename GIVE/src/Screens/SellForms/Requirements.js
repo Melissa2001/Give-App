@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Pressable, HStack, Badge, Spacer, ScrollView } from 'native-base';
+import { Dimensions } from "react-native";
 import CommonButton from '../../../Shared/Form/CommonButton';
 import { useNavigation } from '@react-navigation/native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
@@ -29,6 +30,9 @@ const Requirement = () => {
     console.log('Button pressed!');
   };
 
+  const deviceWidth = Math.round(Dimensions.get("window").width);
+
+
   return (
     <ScrollView style={{ backgroundColor: '#fff' }}>
       <View style={{ marginRight: 10, alignSelf: 'flex-end' }}>
@@ -43,14 +47,14 @@ const Requirement = () => {
 
       {requirements.map((requirement, index) => (
         <View key={index} style={{ marginTop: 40 }}>
-          <RequirementCard requirement={requirement} handlePress={handlePress} />
+          <RequirementCard requirement={requirement} handlePress={handlePress} deviceWidth={deviceWidth} />
         </View>
       ))}
     </ScrollView>
   );
 };
 
-function RequirementCard({ requirement, handlePress }) {
+function RequirementCard({ requirement, handlePress,deviceWidth }) {
   return (
     <View alignItems="center">
       <Pressable maxW={96}>
@@ -63,6 +67,9 @@ function RequirementCard({ requirement, handlePress }) {
             shadow={3}
             borderWidth={1}
             borderColor="coolGray.300"
+            marginBottom={5}
+            height={300}
+            width={deviceWidth - 80}
           >
             <HStack alignItems="center">
               <Badge colorScheme="purple" _text={{ color: 'white' }} variant="solid" rounded={4}>

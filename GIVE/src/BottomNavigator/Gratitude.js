@@ -78,6 +78,7 @@ const Posts = [
 ];
 
 const Gratitude = () => {
+  const report=require('../../assets/report.png')
   const navigation = useNavigation();
 
   return (
