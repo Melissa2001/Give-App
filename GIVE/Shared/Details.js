@@ -3,14 +3,15 @@ import { View, Text, Image, StyleSheet, ScrollView, Dimensions ,TouchableOpacity
 import CommonButton from './Form/CommonButton';
 import baseURL from '../assets/common/baseUrl';
 import axios from 'axios';
-
+import { useNavigation } from '@react-navigation/native';
+import Chat from '../src/Screens/ChatAndGratitude/Chat';
 const { width } = Dimensions.get('window');
 
 const Details = ({ route }) => {
   const report = require('../assets/report.png')
   const { product } = route.params;
   const [userName, setUserName] = useState('');
-
+  const navigation = useNavigation();
   useEffect(() => {
     fetchUserName();
   }, []);
@@ -41,9 +42,9 @@ const Details = ({ route }) => {
       <Text style={styles.heading}>Contact</Text>
       <Text style={styles.contactname}>{userName}</Text>
       <View style={styles.buttonContainer}>
-        <CommonButton
+      <CommonButton
           onPress={() => {
-            // Handle button press
+            navigation.navigate('Chat');
           }}
           title="Message"
           bgColor="#4CAF50"
