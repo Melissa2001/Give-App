@@ -20,7 +20,7 @@ const OrganizationCard = (props) => {
                 <Text style={styles.title}>
                     {name}
                 </Text>
-                {countInStock < 0 ? null : <Text style={{ marginTop:0,color:'#F59683',fontWeight:'bold',marginLeft:35}}>1 requirement</Text>}
+                {countInStock < 0 ? null : <Text style={{ marginTop:-10,color:'#F59683',fontWeight:'bold',marginLeft:35}}>1 requirement</Text>}
                 {/* <Image source={image3} style={styles.button}></Image> */}
                 {/* <Text style={styles.brand}><Image source={image2} ></Image>{brand}</Text> */}
                 
@@ -32,19 +32,20 @@ const OrganizationCard = (props) => {
 const styles = StyleSheet.create({
     cardContainer: {
         width: width - 40,
-        backgroundColor: '#927FDB',
+        backgroundColor: '#907ad6',
         height: width / 3,
-
         borderRadius: 20,
         marginTop: 30,
         marginBottom: 5,
         marginLeft: 20,
         alignItems: "center",
-        flexDirection: 'row'
+        flexDirection: 'row',
+        
+
     },
     card: {
-        marginBottom: 10,
-        height: width / 2 - 20 - 90,
+        marginBottom: 40,
+        // height: width / 2 - 20 - 90,
         // width: width / 2 - 20 - 10,
         marginLeft:15
     },

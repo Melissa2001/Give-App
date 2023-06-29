@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Button, Image, FlatList } from 'react-native';
+import { View, Text, StyleSheet, Button, Image, FlatList, Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import {
   Container,
@@ -15,6 +15,7 @@ import {
 } from '../../../assets/data/messageStyles'
 
 
+const { width } = Dimensions.get('window');
 
 const Messages =
 [
@@ -170,8 +171,8 @@ const Chat = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    // alignItems: 'center',
+    // justifyContent: 'center',
   },
   content: {
     flex: 1,
