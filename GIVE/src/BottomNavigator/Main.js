@@ -62,7 +62,7 @@ const Main = () => {
                 {renderCircle(BookImage, 'Books')}
               </Center>
               <Center>
-                {renderCircle(VolunImage, 'Volunteer')}
+                {renderCircle(VolunImage, 'Furniture')}
               </Center>
               <Center>
                 {renderCircle(OtherImage, 'Others')}

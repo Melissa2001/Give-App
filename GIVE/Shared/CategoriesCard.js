@@ -8,8 +8,9 @@ const data = [
   { id: '1', title: 'Medical Appliances', color: '#FBDBD4', image: require('../assets/medicalIcon.png') },
   { id: '2', title: 'Cloths', color: '#FAECD3', image: require('../assets/clothIcon.png') },
   { id: '3', title: 'Books', color: '#E7D4C1', image: require('../assets/booksIcon.png') },
-  { id: '4', title: 'Volunteering', color: '#C4ECE0', image: require('../assets/volunteeringIcon.png') },
+  { id: '4', title: 'Furniture', color: '#C4ECE0', image: require('../assets/volunteeringIcon.png') },
   { id: '5', title: 'Others', color: '#CADCE6', image: require('../assets/othersIcon.png') },
+  { id: '6', title: 'Requirements', color: '#CADCE6', image: require('../assets/othersIcon.png')},
 ];
 
 const CategoriesCard = () => {
@@ -24,7 +25,7 @@ const CategoriesCard = () => {
       navigation.navigate('BookForm', { categoryName: item.title });
     } else if (item.id === '4') {
       navigation.navigate('VolunteeringForm', { categoryName: item.title });
-    } else {
+    }else {
       navigation.navigate('OthersForm', { categoryName: item.title });
     }
   };
