@@ -30,8 +30,8 @@ return(
             <View style={styles.cardContainer}>
                 <View>
                     <Text style={styles.name}>Donate</Text>
-                    <Text style={styles.location}>Acc. No : 12345678</Text>
-                    <Text style={styles.location}>UPI ID : ybl@123456789</Text>
+                    <Text style={styles.location}>Acc. No : {item.account_number}</Text>
+                    <Text style={styles.location}>UPI ID :{item.upid}</Text>
                 </View>
                 <Image style={styles.qr} source={image} />
             </View>
