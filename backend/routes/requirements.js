@@ -34,4 +34,18 @@ router.get('/', async (req, res) => {
     }
   });
 
+  router.get('/:organizationId', async (req, res) => {
+    try {
+      const { organizationId } = req.params;
+  
+      // Find the requirements by organization ID
+      const requirements = await Requirement.find({ organizationId });
+  
+      res.status(200).json(requirements);
+    } catch (error) {
+      console.error('Error fetching requirements:', error);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+  });
+  
 module.exports = router;

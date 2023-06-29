@@ -34,8 +34,8 @@ const organizationSchema = new mongoose.Schema({
       required:false
     },
     requirement:{
-        type:Boolean,
-        default:false,
+        type:Number,
+        default:0,
       },
   });
 
