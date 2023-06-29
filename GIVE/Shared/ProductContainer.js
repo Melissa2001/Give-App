@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,userContext, useContext } from 'react';
 import { View, ScrollView, Image, Text, Dimensions, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
 import baseURL from '../assets/common/baseUrl';
-
+import { UserContext } from '../contexts/userContexts'
 import Details from './Details';
 const { width, height } = Dimensions.get('window');
 
@@ -12,6 +12,7 @@ const ProductsContainer = ({ categoryName }) => {
   const cardWidth = width * 0.4;
   const cardMargin = width * 0.04;
   const navigation = useNavigation();
+  const userContext=useContext(UserContext);
   const image = require('../assets/traash.png');
 
   useEffect(() => {
@@ -40,6 +41,14 @@ const ProductsContainer = ({ categoryName }) => {
     
     console.log('Card pressed:', product);
   };
+  const handleDeleteProduct = async (productId) => {
+    try {
+      await axios.delete(`${baseURL}products/${productId}`);
+      fetchProducts();
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -51,7 +60,14 @@ const ProductsContainer = ({ categoryName }) => {
             onPress={() => handleCardPress(product)}
           >
             <Image source={{ uri: product.image }} style={styles.productImage} />
-            <Image source={image} style={{margin:10}}/>
+            {userContext.isAdmin && userContext.tableUsed === 'users' && (
+  <TouchableOpacity
+    style={styles.trashIconContainer}
+    onPress={() => handleDeleteProduct(product._id)}
+  >
+    <Image source={image} style={styles.trashIcon} />
+  </TouchableOpacity>
+)}
             <Text style={styles.productName}>{product.name}</Text>
             
           </TouchableOpacity>
