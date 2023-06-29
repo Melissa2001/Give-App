@@ -28,6 +28,7 @@ import OrgSingleHome from "../Shared/OrgSingleHome";
 import ChatScreen from "./Screens/ChatAndGratitude/ChatScreen";
 import AddPostScreen from "./Screens/ChatAndGratitude/AddPostScreen";
 import Chat from '../src/Screens/ChatAndGratitude/Chat'
+import ChatGratitude from "./BottomNavigator/ChatGratitude";
 const Stack = createNativeStackNavigator();
 const Tab = createMaterialTopTabNavigator();
 
@@ -184,6 +185,13 @@ const AppNavigator = () => {
           name="AddPostScreen"
           component={AddPostScreen}
         />
+
+<Stack.Screen
+          options={{ headerShown: false }}
+          name="ChatGratitude"
+          component={ChatGratitude}
+        />
+
          <Stack.Screen
           options={({ route }) => ({
             headerShown: true,
