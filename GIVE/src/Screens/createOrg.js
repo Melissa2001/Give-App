@@ -48,7 +48,7 @@ const CreateOrg = () => {
 
         if (response.status === 200) {
           console.log('Success');
-          navigation.navigate('OTP');
+          navigation.navigate('Success');
         }
       } catch (error) {
         console.error(error);
