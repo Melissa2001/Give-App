@@ -5,14 +5,16 @@ const UserContext = React.createContext();
 const UserProvider = ({ children }) => {
   const [userId, setUserId] = useState(null);
   const [tableUsed, setTableUsed] = useState('');
+  const [isAdmin, setIsAdmin] = useState(false);
 
-  const updateUserId = (id, table) => {
+  const updateUserId = (id, table, adminStatus) => {
     setUserId(id);
     setTableUsed(table);
+    setIsAdmin(adminStatus);
   };
 
   return (
-    <UserContext.Provider value={{ userId, tableUsed, updateUserId }}>
+    <UserContext.Provider value={{ userId, tableUsed, isAdmin, updateUserId }}>
       {children}
     </UserContext.Provider>
   );
