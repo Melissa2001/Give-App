@@ -27,7 +27,7 @@ import Contact from "./Screens/Contact";
 import OrgSingleHome from "../Shared/OrgSingleHome";
 import ChatScreen from "./Screens/ChatAndGratitude/ChatScreen";
 import AddPostScreen from "./Screens/ChatAndGratitude/AddPostScreen";
-
+import Chat from '../src/Screens/ChatAndGratitude/Chat'
 const Stack = createNativeStackNavigator();
 const Tab = createMaterialTopTabNavigator();
 
@@ -181,6 +181,14 @@ const AppNavigator = () => {
           options={{ headerShown: true }}
           name="AddPostScreen"
           component={AddPostScreen}
+        />
+         <Stack.Screen
+          options={({ route }) => ({
+            headerShown: true,
+            title: 'Chat', // Set the desired title for the Chat screen
+          })}
+          name="Chat"
+          component={Chat}
         />
       </Stack.Navigator>
     </NavigationContainer>

@@ -28,7 +28,7 @@ const Requirement = () => {
   };
 
   const handlePress = () => {
-    console.log('Button pressed!');
+    navigation.navigate('Chat', { requirements });
   };
 
   const deviceWidth = Math.round(Dimensions.get("window").width);
