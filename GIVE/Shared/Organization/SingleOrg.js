@@ -9,13 +9,13 @@ const SingleOrg = (props) => {
     const image = require('../../assets/qrcode.png');
 return( 
         <ScrollView style={{ padding: 5 ,backgroundColor:'white'}}>
-            <Image
+            {/* <Image
                 source={{
                     uri: item.image ? item.image : 'https://cdn.pixabay.com/photo/2012/04/01/17/29/box-23649_960_720.png'
                 }}
                 resizeMode="cover"
                 style={styles.image}
-            />
+            /> */}
             <Text style={styles.heading}>{item.name}</Text>
             <Text style={styles.req}>Requirements</Text>
             <Text style={styles.description}>{item.description}</Text>
@@ -40,12 +40,12 @@ return(
 }
 
 const styles = StyleSheet.create({
-    image: {
-        height:width,
-        width: width,
-        borderRadius: 20,
-        alignSelf: 'center'
-    },
+    // image: {
+    //     height:width,
+    //     width: width,
+    //     borderRadius: 20,
+    //     alignSelf: 'center'
+    // },
     heading: {
         fontWeight: 'bold',
         color: '#434343',

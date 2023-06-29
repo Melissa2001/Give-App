@@ -10,7 +10,6 @@ const Card = (props) => {
         <TouchableOpacity
             onPress={() =>
                 navigation.navigate('OrgSingleHome')}>
-
             <View style={styles
                 .cardContainer}>
                 <Image style={styles.imageStyle} source={image}></Image>
@@ -20,11 +19,8 @@ const Card = (props) => {
                     <Image source={image3} style={styles.button}></Image>
                     <Text style={styles.location}><Image source={image2} ></Image>Kizhathadiyoor,Palai</Text>
                 </View>
-
             </View>
         </TouchableOpacity>
-
-
     )
 }
 const deviceWidth = Math.round(Dimensions.get('window').width)
