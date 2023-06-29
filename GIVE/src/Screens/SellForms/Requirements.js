@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useContext } from 'react';
 import { View, Text, Pressable, HStack, Badge, Spacer, ScrollView } from 'native-base';
 import { Dimensions } from "react-native";
 import CommonButton from '../../../Shared/Form/CommonButton';
 import { useNavigation } from '@react-navigation/native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import axios from 'axios';
+import { UserContext } from '../../../contexts/userContexts';
 import baseURL from '../../../assets/common/baseUrl';
 
 const Requirement = () => {
   const navigation = useNavigation();
   const [requirements, setRequirements] = useState([]);
-
+  const userContext = useContext(UserContext);
   useEffect(() => {
     fetchRequirements();
   }, []);
@@ -35,6 +36,7 @@ const Requirement = () => {
 
   return (
     <ScrollView style={{ backgroundColor: '#fff' }}>
+    {(userContext.tableUsed === 'organizations' || (userContext.tableUsed === 'users' && userContext.isAdmin)) && (
       <View style={{ marginRight: 10, alignSelf: 'flex-end' }}>
         <FontAwesome5.Button
           name="plus"
@@ -43,8 +45,8 @@ const Requirement = () => {
           color="#9683dd"
           onPress={() => navigation.navigate('AddPostScreen', { screenType: 'requirements' })}
         />
-      </View>
-
+     </View>
+      )}
       {requirements.map((requirement, index) => (
         <View key={index} style={{ marginTop: 40 }}>
           <RequirementCard requirement={requirement} handlePress={handlePress} deviceWidth={deviceWidth} />
