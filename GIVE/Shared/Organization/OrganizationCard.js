@@ -12,7 +12,7 @@ var { width } = Dimensions.get("window")
 const OrganizationCard = (props) => {
     // const image2 = require('../../assets/Map_Pin.png')
     // const image3 = require('../../assets/Paper_Plane.png')
-    const { name, brand, image, countInStock} = props;
+    const { name, brand, image, requirement} = props;
     return (
         <View style={styles.cardContainer}>
             {/* <Image style={styles.imageStyle} source={{ uri: image?image:'https://cdn.pixabay.com/photo/2012/04/01/17/29/box-23649_960_720.png'}} /> */}
@@ -20,7 +20,7 @@ const OrganizationCard = (props) => {
                 <Text style={styles.title}>
                     {name}
                 </Text>
-                {countInStock < 0 ? null : <Text style={{ marginTop:-10,color:'#F59683',fontWeight:'bold',marginLeft:35}}>1 requirement</Text>}
+                {requirement < 0 ? null : <Text style={{ marginTop:-10,color:'#F59683',fontWeight:'bold',marginLeft:35}}>{requirement} requirement</Text>}
                 {/* <Image source={image3} style={styles.button}></Image> */}
                 {/* <Text style={styles.brand}><Image source={image2} ></Image>{brand}</Text> */}
                 
