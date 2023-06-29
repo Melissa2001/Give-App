@@ -12,6 +12,7 @@ const ProductsContainer = ({ categoryName }) => {
   const cardWidth = width * 0.4;
   const cardMargin = width * 0.04;
   const navigation = useNavigation();
+  const image = require('../assets/traash.png');
 
   useEffect(() => {
     fetchProducts();
@@ -50,7 +51,9 @@ const ProductsContainer = ({ categoryName }) => {
             onPress={() => handleCardPress(product)}
           >
             <Image source={{ uri: product.image }} style={styles.productImage} />
+            <Image source={image} style={{margin:10}}/>
             <Text style={styles.productName}>{product.name}</Text>
+            
           </TouchableOpacity>
         ))}
       </View>
@@ -96,7 +99,7 @@ const styles = StyleSheet.create({
   productName: {
     fontSize: 16,
     fontWeight: 'bold',
-    marginTop: 20,
+    marginTop: 0,
     marginLeft:20,
     color:'grey',
   },
