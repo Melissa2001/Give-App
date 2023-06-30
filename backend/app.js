@@ -20,12 +20,13 @@ const productsRoutes = require('./routes/products');
 const categoriesRoutes = require('./routes/categories');
 const organizationRoutes = require('./routes/organizations');
 const requirementRoutes = require('./routes/requirements');
-const postRoutes = require('./routes/
+const postRoutes = require('./routes/post');
 app.use(`${api}/users`, usersRoutes);
 app.use(`${api}/products`, productsRoutes);
 app.use(`${api}/categories`, categoriesRoutes);
 app.use(`${api}/organizations`, organizationRoutes);
 app.use(`${api}/requirements`, requirementRoutes);
+app.use('${api}/post`,postRoutes);
 
 mongoose
   .connect(process.env.CONNECTION_STRING, {
