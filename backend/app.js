@@ -25,6 +25,7 @@ app.use(`${api}/products`, productsRoutes);
 app.use(`${api}/categories`, categoriesRoutes);
 app.use(`${api}/organizations`, organizationRoutes);
 app.use(`${api}/requirements`, requirementRoutes);
+app.get("/",(req,res)=>{res.send({"hi":"hello"})});
 
 mongoose
   .connect(process.env.CONNECTION_STRING, {
