@@ -11,8 +11,9 @@ router.post('/', async (req, res) => {
 
     // Create a new post object
     const newPost = new Post({
-      image,
-      content
+      image: image,
+      content: content,
+      userId:userId
     });
 
     // Save the post to the database
