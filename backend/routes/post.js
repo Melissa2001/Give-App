@@ -7,11 +7,11 @@ const Post = require('../models/Post');
 // Description: Create a new post
 router.post('/', async (req, res) => {
   try {
-    const { title, content } = req.body;
+    const { image, content } = req.body;
 
     // Create a new post object
     const newPost = new Post({
-      title,
+      image,
       content
     });
 
