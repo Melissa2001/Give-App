@@ -7,8 +7,8 @@
     "start": "nodemon app.js",
     "GIVE":"npm start --prefix ../GIVE",
     "backend":"nodemon app.js",
-    "dev":"concurrently \"npm run GIVE\" \"npm run backend\"",
-     "postinstall": "npm run build"
+    "dev":"concurrently \"npm run GIVE\" \"npm run backend\""
+    
   },
   "author": "",
   "license": "ISC",
