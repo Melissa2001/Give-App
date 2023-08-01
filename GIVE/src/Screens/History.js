@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useContext } from "react";
 import {
   View,
@@ -8,7 +7,10 @@ import {
   Badge,
   Spacer,
   ScrollView,
+  Image,
+  
 } from "native-base";
+import { TouchableOpacity } from "react-native";
 import { Dimensions } from "react-native";
 import axios from "axios";
 import baseURL from "../../assets/common/baseUrl";
@@ -19,25 +21,35 @@ const History = () => {
   const userContext = useContext(UserContext);
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await axios.get(`${baseURL}products/date`);
-        const userProducts = response.data.filter(
-          (product) => product.userId === userContext.userId
-        );
-        const sortedProducts = userProducts.sort(
-          (a, b) => new Date(b.postedDate) - new Date(a.postedDate)
-        );
-        setProducts(sortedProducts);
-      } catch (error) {
-        console.error("Error fetching products:", error);
-      }
-    };
-
     fetchProducts();
   }, [userContext.userId]);
 
   const deviceWidth = Math.round(Dimensions.get("window").width);
+
+  const fetchProducts = async () => {
+    try {
+      const response = await axios.get(`${baseURL}products/date`);
+      const userProducts = response.data.filter(
+        (product) => product.userId === userContext.userId
+      );
+      const sortedProducts = userProducts.sort(
+        (a, b) => new Date(b.postedDate) - new Date(a.postedDate)
+      );
+      setProducts(sortedProducts);
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    }
+  };
+
+  const handleDeleteProduct = async (productId) => {
+    try {
+      await axios.delete(`${baseURL}products/${productId}`);
+      // After successful deletion, call fetchProducts to update the product list
+      fetchProducts();
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <ScrollView>
@@ -47,6 +59,7 @@ const History = () => {
             key={product.id}
             product={product}
             deviceWidth={deviceWidth}
+            handleDeleteProduct={handleDeleteProduct}
           />
         ))}
       </View>
@@ -54,7 +67,9 @@ const History = () => {
   );
 };
 
-function HistoryCard({ product, deviceWidth }) {
+function HistoryCard({ product, deviceWidth, handleDeleteProduct }) {
+  const image4 = require('../../assets/traash.png');
+
   return (
     <View alignItems="center">
       <Pressable maxW={96}>
@@ -94,6 +109,11 @@ function HistoryCard({ product, deviceWidth }) {
             <Text mt={2} fontSize="sm" color="coolGray.700">
               {product.name} is bought or sold on {product.postedDate} by you.
             </Text>
+            <TouchableOpacity
+              onPress={() => handleDeleteProduct(product._id)}
+            >
+              <Image source={image4} />
+            </TouchableOpacity>
           </View>
         )}
       </Pressable>
