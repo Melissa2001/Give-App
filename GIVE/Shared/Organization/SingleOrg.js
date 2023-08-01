@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Image, View, StyleSheet, Text, ScrollView, TouchableOpacity, Dimensions } from 'react-native';
 import axios from 'axios';
 import baseURL from '../../assets/common/baseUrl';
+import { useNavigation } from "@react-navigation/native";
 
 const { width, height } = Dimensions.get("window");
 
@@ -23,16 +24,15 @@ const SingleOrg = (props) => {
   };
 
   const image = require('../../assets/qrcode.png');
-
+  const image1 = require('../../assets/organization.png')
+  const navigation=useNavigation()
   return (
     <ScrollView style={{ padding: 5, backgroundColor: 'white' }}>
-      {/* <Image
-        source={{
-          uri: item.image ? item.image : 'https://cdn.pixabay.com/photo/2012/04/01/17/29/box-23649_960_720.png'
-        }}
+       <Image
+        source={image1}
         resizeMode="cover"
         style={styles.image}
-      /> */}
+      /> 
       <Text style={styles.heading}>{item.name}</Text>
       <Text style={styles.description}>{item.description}</Text>
       {requirements.length > 0 ? (
@@ -48,12 +48,10 @@ const SingleOrg = (props) => {
         <Text style={styles.noRequirementsText}>No requirements available.</Text>
       )}
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button} onPress={() => onPress()}>
+        <TouchableOpacity style={styles.button} onPress={() => {navigation.navigate('ChatGratitude')}}>
           <Text style={styles.buttonFont}>Message</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => onPress()}>
-          <Text style={styles.buttonFont}>View Location</Text>
-        </TouchableOpacity>
+        
       </View>
       <View style={styles.cardContainer}>
         <View>
@@ -68,12 +66,12 @@ const SingleOrg = (props) => {
 };
 
 const styles = StyleSheet.create({
-  // image: {
-  //     height:width,
-  //     width: width,
-  //     borderRadius: 20,
-  //     alignSelf: 'center'
-  // },
+   image: {
+     height:width,
+     width: width,
+     borderRadius: 20,
+     alignSelf: 'center'
+   },
   heading: {
     fontWeight: 'bold',
     color: '#434343',
