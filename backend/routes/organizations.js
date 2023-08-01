@@ -10,6 +10,9 @@ router.post('/reg', async (req, res) => {
   if (existingOrganization) {
     return res.status(400).json({message:'An organization with the same email already exists'});
   }
+  if (!/^\d{6}$/.test(regno)) {
+    return res.status(400).json({ message: 'Registration number must contain exactly 6 digits' });
+  }
 
   // Create a new organization
   const organization = new Organization({
