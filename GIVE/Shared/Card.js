@@ -17,7 +17,7 @@ const Card = (props) => {
                     <Text style={styles.name}>Maryasadhanam</Text>
                     <Text style={styles.requirement}>1 requirement</Text>
                     <Image source={image3} style={styles.button}></Image>
-                    <Text style={styles.location}><Image source={image2} ></Image>Kizhathadiyoor,Palai</Text>
+                    {/* <Text style={styles.location}><Image source={image2} ></Image>Kizhathadiyoor,Palai</Text> */}
                 </View>
             </View>
         </TouchableOpacity>
