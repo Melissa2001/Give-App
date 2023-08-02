@@ -35,14 +35,17 @@ const OrganizationCard = (props) => {
     }
   };
 
-  const handleDeleteOrganization = async (orgid) => {
+  const handleDeleteOrganization = async () => {
     try {
-      await axios.delete(`${baseURL}organizations/${orgid}`);
-      alert("deleted organization");
+    
+        await axios.delete(`${baseURL}organizations/${id}`);
+
+      
       // After successful deletion, call fetchOrganizations to update the organization list
       fetchOrganizations();
     } catch (error) {
       console.error('Error deleting organization:', error);
+    
     }
   };
 
@@ -52,7 +55,7 @@ const OrganizationCard = (props) => {
       <View style={styles.card}>
         <View style={{ flexDirection: 'row' }}>
           <Text style={styles.title}>{name}</Text>
-          <TouchableOpacity onPress={()=>{handleDeleteOrganization(id)}}>
+          <TouchableOpacity onPress={handleDeleteOrganization}>
             <Image source={image4} style={{ margin: 20 }} />
           </TouchableOpacity>
         </View>
