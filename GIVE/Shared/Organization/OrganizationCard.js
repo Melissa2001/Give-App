@@ -39,7 +39,7 @@ const OrganizationCard = (props) => {
     try {
     
         await axios.delete(`${baseURL}organizations/${id}`);
-        alert('Organization Deleted');
+        
         // After successful deletion, call fetchOrganizations to update the organization list
         fetchOrganizations();  
       
