@@ -18,7 +18,7 @@ const OrganizationList = (props) => {
             >
             <View style={{ width: width }}
             >
-                 <OrganizationCard id={item.id} name={item.name} requirement={item.requirement} />
+                <OrganizationCard {...item} />
             </View>
         </TouchableOpacity>
     )

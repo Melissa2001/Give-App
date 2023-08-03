@@ -39,10 +39,10 @@ const OrganizationCard = (props) => {
     try {
     
         await axios.delete(`${baseURL}organizations/${id}`);
-
+        alert('Organization Deleted');
+        // After successful deletion, call fetchOrganizations to update the organization list
+        fetchOrganizations();  
       
-      // After successful deletion, call fetchOrganizations to update the organization list
-      fetchOrganizations();
     } catch (error) {
       console.error('Error deleting organization:', error);
     
@@ -59,7 +59,7 @@ const OrganizationCard = (props) => {
             <Image source={image4} style={{ margin: 20 }} />
           </TouchableOpacity>
         </View>
-        {requirement > 0 ? null : (
+        {requirement >= 0 ? (
           <Text
             style={{
               marginTop: -10,
@@ -68,9 +68,9 @@ const OrganizationCard = (props) => {
               marginLeft: 35,
             }}
           >
-            1 requirement
+            {requirement} requirement
           </Text>
-        )}
+        ) : null}
         <TouchableOpacity
           onPress={() => {
             navigation.navigate('ChatGratitude');

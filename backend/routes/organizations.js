@@ -120,4 +120,19 @@ router.post('/reg', async (req, res) => {
       res.status(500).json({ message: 'Server Error' });
     }
   });
+
+  router.delete('/:id', async (req, res) => {
+    try {
+      const organizationId = req.params.id;
+  
+      // Delete the organization from the database
+      await Organization.findByIdAndDelete(organizationId);
+  
+      res.status(200).json({ message: 'Organization deleted successfully' });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Server Error' });
+    }
+  });
+  
 module.exports = router;

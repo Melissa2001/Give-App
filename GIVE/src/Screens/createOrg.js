@@ -74,6 +74,12 @@ const CreateOrg = () => {
             </Pressable>
             <Text style={styles.text}>Upload QRCODE</Text>
           </View>
+          <View style={styles.image}>
+            <Pressable onPress={pickImageAsync}>
+              <Image source={ImagePickerIcon} style={styles.icon} />
+            </Pressable>
+            <Text style={styles.text}>Upload RegNo certificate</Text>
+          </View>
         </View>
 
         <Input
