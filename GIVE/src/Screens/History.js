@@ -18,10 +18,12 @@ import { UserContext } from "../../contexts/userContexts";
 
 const History = () => {
   const [products, setProducts] = useState([]);
+  const [req,setReq] = useState([]);
   const userContext = useContext(UserContext);
 
   useEffect(() => {
     fetchProducts();
+    fetchReq();
   }, [userContext.userId]);
 
   const deviceWidth = Math.round(Dimensions.get("window").width);
@@ -40,6 +42,21 @@ const History = () => {
       console.error("Error fetching products:", error);
     }
   };
+  const fetchReqs = async () => {
+    try {
+      const response = await axios.get(`${baseURL}requirements/date`);
+      const userReqs = response.data.filter(
+        (req) => req.userId === userContext.userId
+      );
+      const sortedReqs = userReqs.sort(
+        (a, b) => new Date(b.postedDate) - new Date(a.postedDate)
+      );
+      setRequirements(sortedReqs);
+    } catch (error) {
+      console.error("Error fetching requirements:", error);
+    }
+  };
+  
 
   const handleDeleteProduct = async (productId) => {
     try {

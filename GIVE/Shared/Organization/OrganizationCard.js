@@ -35,7 +35,7 @@ const OrganizationCard = (props) => {
     }
   };
 
-  const handleDeleteOrganization = async () => {
+  const handleDeleteOrganization = async (id) => {
     try {
     
         await axios.delete(`${baseURL}organizations/${id}`);
@@ -55,7 +55,7 @@ const OrganizationCard = (props) => {
       <View style={styles.card}>
         <View style={{ flexDirection: 'row' }}>
           <Text style={styles.title}>{name}</Text>
-          <TouchableOpacity onPress={handleDeleteOrganization}>
+          <TouchableOpacity onPress={handleDeleteOrganization(id)}>
             <Image source={image4} style={{ margin: 20 }} />
           </TouchableOpacity>
         </View>
